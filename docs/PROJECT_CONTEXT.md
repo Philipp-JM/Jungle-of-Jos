@@ -49,11 +49,18 @@ the number of tours and the amount of detail grew. The current structure is:
 
 - `index.html`: home page with hero, About, featured tours, gallery, and contact.
 - `faq.html`: booking, payment, equipment, weather, and general FAQ sections.
+- `info.html`: travel info hub with link cards to the info pages below.
+- `getting-there.html`, `national-park.html`, `wildlife.html`: info pages
+  (currently empty skeletons, see "Content expansion" below).
 - `tours/all-tours.html`: complete tour overview.
 - `tours/3-hour.html`, `tours/1-day.html`, `tours/2-day.html`, `tours/3-day.html`,
   `tours/4-day.html`, `tours/5-day.html`, `tours/6-day.html`, `tours/7-day.html`,
   `tours/kuta-cane.html`, and `tours/orangutan-monitoring.html`: individual
   tour detail pages.
+
+New top-level pages stay in the root folder. `js/nav.js` only distinguishes
+between the root folder and `tours/` when building relative paths, so a new
+subfolder (e.g. `info/`) would require changing that logic first.
 
 Tour cards are ordinary links to detail pages. The earlier CSS flip-card idea
 was replaced because detail pages provide more room for itineraries, inclusions,
@@ -143,6 +150,53 @@ Still incomplete or requiring review:
   still contain `PLACEHOLDER` text and require facts from Jos.
 - Prices need to be synchronized from `tours/all-tours.html` to detail pages.
 - The domain and the long-term payer/owner remain undecided.
+
+## Content expansion (TODO)
+
+Jos asked for more content on the site (more about the animals and orangutans,
+the jungle, and how to get to Bukit Lawang). We deliberately keep this much
+smaller than professional agency sites: a few focused, easy-to-maintain pages.
+The navigation gets a single "Info" item that links to a hub page
+(`info.html`) instead of a dropdown menu.
+
+Done:
+
+- [x] Skeleton pages `info.html`, `getting-there.html`, `national-park.html`,
+      `wildlife.html`, linked from the navigation and listed in `sitemap.xml`.
+      Each skeleton lists its planned sections in an HTML comment.
+- [x] Fixed the "Tours" navigation link (was built as `/tours/...` and
+      `..//tours/...`, which broke `file://` and project URLs).
+
+To do:
+
+- [ ] Fill `getting-there.html`: Kualanamu Airport (KNO) / Medan to Bukit
+      Lawang by private car/taxi, tourist shuttle and public bus via Binjai
+      (approximate travel times, pros and cons, no prices); arriving in Bukit
+      Lawang (pick-up at the bus station, accommodation); cash/ATMs (link to
+      the FAQ), SIM card; best time to travel / rainy season; onward travel to
+      Lake Toba, Berastagi or Medan. Confirm details with Jos.
+- [ ] Fill `wildlife.html`: Sumatran orangutan (status, Bohorok rehabilitation
+      centre history, semi-wild vs. wild); short profiles of other species,
+      only those Jos confirms; rules for wildlife encounters (no feeding,
+      keep distance, no litter); clear note that sightings are never
+      guaranteed.
+- [ ] Fill `national-park.html`: Gunung Leuser National Park and Leuser
+      Ecosystem, UNESCO World Heritage status, the Bohorok river and
+      landscape, plants, threats to the forest. Ask Jos whether park permits
+      or entrance fees apply and whether they are included in tour prices.
+- [ ] Add photos to the info pages and info cards (ideally Jos' own photos,
+      e.g. from his Instagram, with confirmed permission).
+- [ ] Have Jos (or the project owner) review general background texts before
+      publishing.
+- [ ] Extend `faq.html` with practical questions, answers from Jos: Wi-Fi and
+      electricity at the camp, vegetarian food, children and minimum age,
+      leeches, travel insurance, luggage storage during the trek.
+- [ ] Optional, undecided: a separate `about.html` page about Jos and his team
+      (his story, the local guides, connection to the village, his approach
+      to nature and animals, later real guest reviews with permission). Only
+      worth doing if Jos provides enough material; otherwise keep the About
+      section on the home page. If added, point the "About" navigation link
+      to it and add it to `sitemap.xml`.
 - A larger visual polish pass remains optional and should not compromise easy
   maintenance or mobile readability.
 
