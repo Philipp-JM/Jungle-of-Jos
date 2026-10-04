@@ -90,7 +90,10 @@ fitness information, and booking guidance.
 
 Repeated markup is injected into placeholders by normal local scripts:
 
-- `js/nav.js` inserts the navigation.
+- `js/nav.js` inserts the navigation. "Info" has a dropdown submenu listing
+  the pages in `info/`: when adding or renaming an info page, also update the
+  submenu list in `js/nav.js`. "Tours" has no dropdown on purpose (eleven
+  tours would make it too long); it links to `tours/all-tours.html`.
 - `js/footer.js` inserts the footer, the current copyright year and the link
   to the privacy policy.
 - `js/cta.js` inserts the contact CTA on tour pages.
@@ -204,14 +207,19 @@ Still incomplete or requiring review:
 Jos asked for more content on the site (more about the animals and orangutans,
 the jungle, and how to get to Bukit Lawang). We deliberately keep this much
 smaller than professional agency sites: a few focused, easy-to-maintain pages.
-The navigation gets a single "Info" item that links to a hub page
-(`info/index.html`) instead of a dropdown menu.
+The navigation has a single "Info" item that links to a hub page
+(`info/index.html`). It also has a small dropdown (arrow button next to the
+link, hover on desktop, expands in place in the mobile menu) listing the info
+pages. The parent link still goes to the hub, so the hub stays reachable on
+touch devices. "Tours" deliberately has no dropdown because the list would be
+too long.
 
 Done:
 
 - [x] Moved all info pages into `info/` (the hub is now `info/index.html`).
 - [x] Skeleton pages `info.html`, `info/getting-there.html`, `info/national-park.html`,
       `info/wildlife.html`, linked from the navigation and listed in `sitemap.xml`.
+- [x] Added the "Info" dropdown to the navigation (`js/nav.js`, `css/style.css`).
 - [x] Fixed the "Tours" navigation link (was built as `/tours/...` and
       `..//tours/...`, which broke `file://` and project URLs).
 
