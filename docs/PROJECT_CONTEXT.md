@@ -121,6 +121,12 @@ step), currently at `jungle-of-jos.pages.dev`. A data processing agreement
 with Cloudflare is in place. No tracking, analytics or other third-party
 services are enabled; keep it that way, or update `privacy.html` first.
 
+The Cloudflare account was set up by a volunteer on Jos' behalf, using an
+email address created for Jos, and is to be handed over to Jos. Jos is the
+operator of the website and the controller under data protection law. The
+volunteer who owns the GitHub repository only maintains the code and is not
+the operator. See "Legal and privacy" under "Open questions for Jos".
+
 The domain decision is still open. Launching on the free `pages.dev`
 subdomain is acceptable. If a custom domain is purchased, long-term ownership
 and payment responsibility must be agreed with Jos first.
@@ -326,12 +332,40 @@ FAQ (`faq.html`):
       (Not mentioned on the site; there is no scientific evidence that salt
       repels snakes.)
 
-Privacy policy (`privacy.html`):
+Legal and privacy (`privacy.html`, hosting):
 
-- [ ] Jos' last name (his first name is Justra; the project owner adds the
-      last name).
-- [ ] Ideally have the draft checked by someone with legal knowledge before
-      launch.
+These points should be settled before launch. They are not legal advice;
+ideally have the final privacy policy checked by someone with legal knowledge.
+
+- [ ] Make sure Jos knows that he is the operator of the website and the
+      responsible person (controller) for personal data, and agrees to it.
+- [ ] Hand over the Cloudflare account and its email address to Jos (login
+      details, recovery options, two-factor authentication). The data
+      processing agreement with Cloudflare must belong to this account, so
+      that "we have concluded a data processing agreement" in `privacy.html`
+      is true for Jos.
+- [ ] Jos' full name (his first name is Justra) and a postal address for
+      section 1 of `privacy.html`. "Bukit Lawang" alone is probably not
+      enough.
+- [ ] Storage periods: how long are Cloudflare access logs kept, and how long
+      does Jos keep WhatsApp chats, emails and booking data? The privacy
+      policy has to state this and currently does not.
+- [ ] Add contact by email to section 4 of `privacy.html`: the address is a
+      Gmail address, so messages are processed by Google (USA).
+- [ ] Applicable law: the policy only refers to the GDPR. Jos is in
+      Indonesia, where the Personal Data Protection Law (UU PDP, No. 27/2022)
+      applies. Decide whether to mention it.
+- [ ] GDPR representative in the EU (Art. 27): needed in principle because the
+      site targets EU travellers; the exception for occasional, low-risk
+      processing probably applies. Decide this consciously.
+- [ ] Mention that booking data goes to Jos in Indonesia (no EU adequacy
+      decision).
+- [ ] State the right to object (Art. 21 GDPR) separately and clearly, since
+      section 2 relies on legitimate interest (Art. 6(1)(f)).
+- [ ] Check in the Cloudflare dashboard that Web Analytics, Bot Fight Mode and
+      similar features are off, so that "no cookies, no tracking" stays true.
+- [ ] Imprint: probably not needed for an operator in Indonesia; confirm once
+      the operator question above is settled.
 
 About (`about.html`):
 
