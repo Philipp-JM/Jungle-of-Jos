@@ -143,9 +143,13 @@ long-tailed macaques, Thomas leaf monkeys, pig-tailed macaques, and wild
 orangutans. Rare sightings must never be promised, especially on shorter tours.
 
 Tours generally include a fresh jungle lunch and fruit snacks. Tours of two or
-more days additionally include dinner and an overnight stay in simple jungle
-huts with mosquito nets. River tubing is included at the end of the standard
-treks where the relevant page says so. Confirm exceptions with Jos before
+more days additionally include dinner and an overnight stay in waterproof
+tents at a jungle camp (thin mattress, light blanket and pillow provided). It
+gets dark at around 7 pm; there is no electricity, only minimal lighting or
+candles. Food is usually traditional Indonesian and plentiful. Drinking water
+is provided at the camp, where guests refill their bottles; there is no way to
+refill water while trekking. River tubing is included at the end of the
+standard treks where the relevant page says so. Confirm exceptions with Jos before
 publishing copy.
 
 ## Current implementation status
@@ -285,8 +289,6 @@ Travel tips (`travel-tips.html`):
 
 Packing list (`packing-list.html`):
 
-- [ ] Is a sleeping bag or sheet needed on overnight treks, or is bedding
-      provided at the camps?
 - [ ] Are leech socks or anything else specific worth recommending?
 
 FAQ (`faq.html`):
@@ -299,6 +301,13 @@ FAQ (`faq.html`):
 - [ ] River tubing: is it suitable for non-swimmers, and are life jackets
       provided? Which tours include tubing?
 - [ ] Do porters cost extra, and how much?
+- [ ] Is it true that salt is placed around the camp to keep snakes away?
+      (Not mentioned on the site; there is no scientific evidence that salt
+      repels snakes.)
+- [ ] Overnight stays are in tents, not huts: the tour pages, `index.html`
+      and `tours/all-tours.html` still say "jungle hut with mosquito net".
+      Confirm this applies to all multi-day tours, including Kuta Cane, and
+      whether the tents have mosquito nets.
 
 About (only if a separate `about.html` is created):
 
