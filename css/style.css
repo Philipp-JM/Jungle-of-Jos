@@ -1272,6 +1272,40 @@ section {
   text-align: center;
 }
 
+/* Info hub cards (info.html): reuse .tour-card, but with a subheading,
+   unclamped preview text and a short topic list */
+.info-card-subheading {
+  font-weight: 600;
+  color: var(--color-accent-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-card-text {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.info-card-topics {
+  list-style: none;
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.info-card-topics li {
+  position: relative;
+  padding: 0.2rem 0 0.2rem 1.25rem;
+}
+
+.info-card-topics li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
 /* =================================================
    RESPONSIVE - small screens
    ================================================= */
