@@ -48,6 +48,9 @@ The original one-page concept was replaced by a static multi-page website as
 the number of tours and the amount of detail grew. The current structure is:
 
 - `index.html`: home page with hero, About, featured tours, gallery, and contact.
+- `about.html`: about Jos, his HPI license, his team and how he guides. The
+  home page only shows a short About teaser that links here, and the "About"
+  navigation item points to this page.
 - `faq.html`: booking, payment, equipment, weather, and general FAQ sections.
 - `info.html`: travel info hub with link cards to the info pages below.
 - `getting-there.html`: how to get to Bukit Lawang from Medan / Kualanamu
@@ -123,7 +126,8 @@ confirms what the activity includes.
 ## Content and factual guidance
 
 Jos is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
-He leads treks himself with support from local guides, speaks Indonesian
+He leads treks himself. His team is currently a cook; when needed he brings in
+other local guides as partners, and porters on request. He speaks Indonesian
 and English, and can help arrange onward travel to Medan, Berastagi, or Lake Toba.
 
 Confirmed by Jos for the FAQ: spontaneous bookings 1 to 2 days ahead are
@@ -229,12 +233,10 @@ To do:
 - [ ] Extend `faq.html` with practical questions, answers from Jos: Wi-Fi and
       electricity at the camp, vegetarian food, children and minimum age,
       leeches, travel insurance, luggage storage during the trek.
-- [ ] Optional, undecided: a separate `about.html` page about Jos and his team
-      (his story, the local guides, connection to the village, his approach
-      to nature and animals, later real guest reviews with permission). Only
-      worth doing if Jos provides enough material; otherwise keep the About
-      section on the home page. If added, point the "About" navigation link
-      to it and add it to `sitemap.xml`.
+- [x] Added `about.html` (Meet Jos, licensed guide, team, how Jos guides,
+      CTA) and shortened the About section on the home page to a teaser.
+      Guest reviews are intentionally left out.
+- [ ] Optional later: a photo and video gallery (Jos has more material).
 - A larger visual polish pass remains optional and should not compromise easy
   maintenance or mobile readability.
 
@@ -308,10 +310,11 @@ FAQ (`faq.html`):
       (Not mentioned on the site; there is no scientific evidence that salt
       repels snakes.)
 
-About (only if a separate `about.html` is created):
+About (`about.html`):
 
-- [ ] More about his story, his guide team and his approach to nature and
-      animals; guest reviews he is happy to publish.
+- [ ] Since when has Jos been guiding? (The page says "for a long time".)
+- [ ] Is the person in `images/jos2.webp`, `jos3.webp` and `jos4.webp` Jos?
+      Only `jos1.webp` is used so far.
 
 ## Working style
 
