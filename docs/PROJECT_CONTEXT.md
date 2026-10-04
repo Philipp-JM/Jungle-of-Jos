@@ -51,6 +51,7 @@ the number of tours and the amount of detail grew. The current structure is:
 - `about.html`: about Jos, his HPI license, his team and how he guides. The
   home page only shows a short About teaser that links here, and the "About"
   navigation item points to this page.
+- `privacy.html`: privacy policy (draft, linked from the footer).
 - `faq.html`: booking, payment, equipment, weather, and general FAQ sections.
 - `info.html`: travel info hub with link cards to the info pages below.
 - `getting-there.html`: how to get to Bukit Lawang from Medan / Kualanamu
@@ -82,7 +83,8 @@ fitness information, and booking guidance.
 Repeated markup is injected into placeholders by normal local scripts:
 
 - `js/nav.js` inserts the navigation.
-- `js/footer.js` inserts the footer and current copyright year.
+- `js/footer.js` inserts the footer, the current copyright year and the link
+  to the privacy policy.
 - `js/cta.js` inserts the contact CTA on tour pages.
 
 This is intentionally not a `fetch()`-based include. Normal scripts can write
@@ -95,6 +97,10 @@ JavaScript is disabled. This is accepted because the site already relies on
 JavaScript for shared elements and the dynamic footer year.
 
 ### Styling
+
+Fonts (Inter and Archivo, latin subset) are stored locally in `fonts/` with
+their SIL OFL licenses, so no data is sent to Google Fonts. Do not switch
+back to loading fonts from external services.
 
 Styling is kept in `css/style.css`. Colors, spacing, layout width, and corner
 radius are CSS variables near the top of the file. The visual direction uses
@@ -309,6 +315,17 @@ FAQ (`faq.html`):
 - [ ] Is it true that salt is placed around the camp to keep snakes away?
       (Not mentioned on the site; there is no scientific evidence that salt
       repels snakes.)
+
+Privacy policy (`privacy.html`, draft):
+
+- [ ] Jos' full name as it should appear as the responsible person.
+- [ ] Contact email address (or confirm WhatsApp only).
+- [ ] Final hosting provider (Cloudflare Pages or GitHub Pages), then add
+      its name and the link to its privacy policy.
+- [ ] Is sharing booking details with partner guides or transport providers
+      described correctly?
+- [ ] Ideally have the draft checked by someone with legal knowledge before
+      launch.
 
 About (`about.html`):
 
