@@ -54,6 +54,8 @@ the number of tours and the amount of detail grew. The current structure is:
   Airport and onward travel.
 - `national-park.html`: Gunung Leuser National Park, park rules, licensed
   guides and standard prices.
+- `packing-list.html`: what to bring for short and multi-day treks, based on
+  the FAQ packing list plus common jungle trekking essentials.
 - `wildlife.html`: Sumatran orangutans (facts, semi-wild vs. wild) and the
   other confirmed monkey species, with a no-guarantee note.
 - `tours/all-tours.html`: complete tour overview.
@@ -187,6 +189,9 @@ To do:
       species (Thomas leaf monkey, long-tailed and pig-tailed macaque) and a
       no-guarantee note linking to the jungle rules on `national-park.html`.
 - [ ] Add more species to `wildlife.html` once Jos confirms them.
+- [x] Added `packing-list.html` (linked from `info.html` and the FAQ answer
+      "What should I bring?"). The FAQ list from Jos is the base; general
+      items like a headlamp, dry bags and toiletries were added.
 - [x] Filled `national-park.html` with general information from public
       sources: the park and UNESCO status, Bukit Lawang's orangutan history,
       threats, access only with permit and licensed guide, jungle rules,
@@ -256,6 +261,15 @@ National park and wildlife (`national-park.html`, `wildlife.html`):
       (e.g. gibbons, hornbills, monitor lizards), ideally with his own photos.
 - [ ] Is the text about semi-wild orangutans on `wildlife.html` accurate for
       today, and does he want to add tips for orangutan encounters?
+
+Packing list (`packing-list.html`):
+
+- [ ] Is a sleeping bag or sheet needed on overnight treks, or is bedding
+      provided at the camps?
+- [ ] Is there electricity at the camps (the page suggests a power bank)?
+- [ ] Do guests carry their own backpack on all treks, or are there porters
+      on longer treks?
+- [ ] Are leech socks or anything else specific worth recommending?
 
 FAQ (`faq.html`):
 

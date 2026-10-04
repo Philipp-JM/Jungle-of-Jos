@@ -792,6 +792,12 @@ section {
   margin-bottom: 0;
 }
 
+.faq-answer a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 .faq-answer ul {
   margin: 0 0 var(--spacing-sm) 0;
 }
@@ -1270,6 +1276,17 @@ section {
 
 .info-map-link {
   text-align: center;
+}
+
+/* Info hub grid: two wider cards per row instead of four narrow ones */
+.tour-cards.info-cards {
+  max-width: 900px;
+}
+
+@media (min-width: 700px) {
+  .tour-cards.info-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Info hub cards (info.html): reuse .tour-card, but with a subheading,
