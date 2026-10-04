@@ -52,8 +52,10 @@ the number of tours and the amount of detail grew. The current structure is:
 - `info.html`: travel info hub with link cards to the info pages below.
 - `getting-there.html`: how to get to Bukit Lawang from Medan / Kualanamu
   Airport and onward travel.
-- `national-park.html`, `wildlife.html`: info pages (currently empty
-  skeletons, see "Content expansion" below).
+- `national-park.html`: Gunung Leuser National Park, park rules, licensed
+  guides and standard prices.
+- `wildlife.html`: info page (currently an empty skeleton, see "Content
+  expansion" below).
 - `tours/all-tours.html`: complete tour overview.
 - `tours/3-hour.html`, `tours/1-day.html`, `tours/2-day.html`, `tours/3-day.html`,
   `tours/4-day.html`, `tours/5-day.html`, `tours/6-day.html`, `tours/7-day.html`,
@@ -180,10 +182,13 @@ To do:
       only those Jos confirms; rules for wildlife encounters (no feeding,
       keep distance, no litter); clear note that sightings are never
       guaranteed.
-- [ ] Fill `national-park.html`: Gunung Leuser National Park and Leuser
-      Ecosystem, UNESCO World Heritage status, the Bohorok river and
-      landscape, plants, threats to the forest. Ask Jos whether park permits
-      or entrance fees apply and whether they are included in tour prices.
+- [x] Filled `national-park.html` with general information from public
+      sources: the park and UNESCO status, Bukit Lawang's orangutan history,
+      threats, access only with permit and licensed guide, jungle rules,
+      how to recognize a licensed (HPI) guide, and the standard prices set by
+      the guide association (the 3-hour to 5-day prices in
+      `tours/all-tours.html` match them). Open points are listed under
+      "Open questions for Jos" below.
 - [ ] Add photos to the info pages and info cards (ideally Jos' own photos,
       e.g. from his Instagram, with confirmed permission).
 - [ ] Have Jos (or the project owner) review general background texts before
@@ -237,8 +242,16 @@ Getting there (`getting-there.html`):
 
 National park and wildlife (`national-park.html`, `wildlife.html`):
 
-- [ ] Do park permits or entrance fees apply, and are they included in the
-      tour prices?
+- [ ] Is Jos a licensed HPI guide, and are his team's guides licensed too?
+      Can guests ask to see his guide ID card? (`national-park.html` tells
+      visitors to ask for it.)
+- [ ] Minimum distance to orangutans: public sources say 10 meters, the
+      project owner remembers 6 meters. Which rule applies today?
+- [ ] Is the park permit (entrance fee) included in the tour prices, and
+      who arranges it?
+- [ ] Is there a maximum group size per guide?
+- [ ] Are the jungle rules on `national-park.html` complete and correct
+      (e.g. telling the guide about illness, no camera flash)?
 - [ ] Which animals does he regularly see on his treks besides long-tailed
       macaques, Thomas leaf monkeys, pig-tailed macaques and orangutans?
 
