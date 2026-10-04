@@ -1211,6 +1211,63 @@ section {
 }
 
 /* =================================================
+   INFO PAGES (getting-there.html etc.)
+   ================================================= */
+/* A readable text column for longer info texts */
+.info-content {
+  max-width: 800px;
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+}
+
+.info-content h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.info-content p {
+  margin-bottom: var(--spacing-md);
+}
+
+.info-content a:not(.btn) {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Side-by-side option boxes (e.g. transport options), stacked on small screens */
+.info-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.info-option {
+  padding: var(--spacing-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-accent-soft-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.info-option h3 {
+  margin-bottom: var(--spacing-xs);
+}
+
+.info-option p:last-child {
+  margin-bottom: 0;
+}
+
+.info-option-meta {
+  font-weight: 600;
+  color: var(--color-accent-dark);
+}
+
+.info-map-link {
+  text-align: center;
+}
+
+/* =================================================
    RESPONSIVE - small screens
    ================================================= */
 @media (max-width: 600px) {
