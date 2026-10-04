@@ -51,7 +51,9 @@ the number of tours and the amount of detail grew. The current structure is:
 - `about.html`: about Jos, his HPI license, his team and how he guides. The
   home page only shows a short About teaser that links here, and the "About"
   navigation item points to this page.
-- `privacy.html`: privacy policy (linked from the footer). Contact email:
+- `privacy.html`: privacy policy (linked from the footer). Responsible
+  person: Justra (no last name, by agreement), Jalan Orangutan No.20774,
+  20774 Bukit Lawang, Indonesia. Contact email:
   `josjungletour@gmail.com`.
 - `faq.html`: booking, payment, equipment, weather, and general FAQ sections.
 - `info/index.html`: travel info hub with link cards to the info pages below.
@@ -344,9 +346,6 @@ ideally have the final privacy policy checked by someone with legal knowledge.
       processing agreement with Cloudflare must belong to this account, so
       that "we have concluded a data processing agreement" in `privacy.html`
       is true for Jos.
-- [ ] Jos' full name (his first name is Justra) and a postal address for
-      section 1 of `privacy.html`. "Bukit Lawang" alone is probably not
-      enough.
 - [ ] Storage periods: how long are Cloudflare access logs kept, and how long
       does Jos keep WhatsApp chats, emails and booking data? The privacy
       policy has to state this and currently does not.
