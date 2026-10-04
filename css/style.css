@@ -516,7 +516,14 @@ section {
   background-image: var(--image-missing);
   background-size: cover;
   background-position: center;
+  object-fit: cover; /* crop instead of stretching photos with another ratio */
   box-shadow: var(--shadow-sm);
+}
+
+/* Upright photo variant (e.g. about.html) */
+.about-image-portrait {
+  aspect-ratio: 3 / 4;
+  max-width: 340px;
 }
 
 .about-text {

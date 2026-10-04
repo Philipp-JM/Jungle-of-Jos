@@ -140,7 +140,8 @@ confirms what the activity includes.
 
 ## Content and factual guidance
 
-Jos (real first name: Justra) is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
+All `images/jos*.webp` photos show Jos (`jos1` on the home page, `jos4` on
+`about.html`). Jos (real first name: Justra) is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
 He leads treks himself. His team is currently a cook; when needed he brings in
 other local guides as partners, and porters on request. He speaks Indonesian
 and English, and can help arrange onward travel to Medan, Berastagi, or Lake Toba.
@@ -336,8 +337,6 @@ Privacy policy (`privacy.html`):
 About (`about.html`):
 
 - [ ] Since when has Jos been guiding? (The page says "for a long time".)
-- [ ] Is the person in `images/jos2.webp`, `jos3.webp` and `jos4.webp` Jos?
-      Only `jos1.webp` is used so far.
 
 ## Working style
 
