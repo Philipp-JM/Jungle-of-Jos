@@ -143,8 +143,11 @@ long-tailed macaques, Thomas leaf monkeys, pig-tailed macaques, and wild
 orangutans. Rare sightings must never be promised, especially on shorter tours.
 
 Tours generally include a fresh jungle lunch and fruit snacks. Tours of two or
-more days additionally include dinner and an overnight stay in waterproof
-tents at a jungle camp (thin mattress, light blanket and pillow provided). It
+more days additionally include dinner and an overnight stay in simple jungle
+huts at a jungle camp: self-built wooden huts that are open to the forest
+but have a waterproof roof and a floor sealed against water. Guests sleep on
+a thin mattress on the floor with a blanket and pillow, under a mosquito
+net. It
 gets dark at around 7 pm; there is no electricity, only minimal lighting or
 candles. Food is usually traditional Indonesian and plentiful. Drinking water
 is provided at the camp, where guests refill their bottles; there is no way to
@@ -304,10 +307,6 @@ FAQ (`faq.html`):
 - [ ] Is it true that salt is placed around the camp to keep snakes away?
       (Not mentioned on the site; there is no scientific evidence that salt
       repels snakes.)
-- [ ] Overnight stays are in tents, not huts: the tour pages, `index.html`
-      and `tours/all-tours.html` still say "jungle hut with mosquito net".
-      Confirm this applies to all multi-day tours, including Kuta Cane, and
-      whether the tents have mosquito nets.
 
 About (only if a separate `about.html` is created):
 
