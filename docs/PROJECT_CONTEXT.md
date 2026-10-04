@@ -54,16 +54,16 @@ the number of tours and the amount of detail grew. The current structure is:
 - `privacy.html`: privacy policy (linked from the footer). Contact email:
   `josjungletour@gmail.com`.
 - `faq.html`: booking, payment, equipment, weather, and general FAQ sections.
-- `info.html`: travel info hub with link cards to the info pages below.
-- `getting-there.html`: how to get to Bukit Lawang from Medan / Kualanamu
+- `info/index.html`: travel info hub with link cards to the info pages below.
+- `info/getting-there.html`: how to get to Bukit Lawang from Medan / Kualanamu
   Airport and onward travel.
-- `national-park.html`: Gunung Leuser National Park, park rules, licensed
+- `info/national-park.html`: Gunung Leuser National Park, park rules, licensed
   guides and standard prices.
-- `packing-list.html`: what to bring for short and multi-day treks, based on
+- `info/packing-list.html`: what to bring for short and multi-day treks, based on
   the FAQ packing list plus common jungle trekking essentials.
-- `travel-tips.html`: Indonesia travel tips: visa and entry, money, health,
+- `info/travel-tips.html`: Indonesia travel tips: visa and entry, money, health,
   emergency numbers, weather, phone and internet, local customs.
-- `wildlife.html`: Sumatran orangutans (facts, semi-wild vs. wild) and the
+- `info/wildlife.html`: Sumatran orangutans (facts, semi-wild vs. wild) and the
   other confirmed monkey species, with a no-guarantee note.
 - `tours/all-tours.html`: complete tour overview.
 - `tours/3-hour.html`, `tours/1-day.html`, `tours/2-day.html`, `tours/3-day.html`,
@@ -71,9 +71,16 @@ the number of tours and the amount of detail grew. The current structure is:
   `tours/kuta-cane.html`, and `tours/orangutan-monitoring.html`: individual
   tour detail pages.
 
-New top-level pages stay in the root folder. `js/nav.js` only distinguishes
-between the root folder and `tours/` when building relative paths, so a new
-subfolder (e.g. `info/`) would require changing that logic first.
+Pages are grouped into folders by topic: general pages (`about.html`,
+`faq.html`, `privacy.html`) stay next to `index.html` in the root folder, tour
+pages live in `tours/`, and info pages in `info/`. Do not add a generic
+`src/` folder: it would only make the public URLs longer and suggest a build
+step that does not exist.
+
+`js/nav.js` and `js/footer.js` work out the path back to the root folder from
+their own `<script src>` (e.g. `../js/nav.js` means "one folder up"), so a
+page in any subfolder works as long as it includes the scripts with the
+correct relative path.
 
 Tour cards are ordinary links to detail pages. The earlier CSS flip-card idea
 was replaced because detail pages provide more room for itineraries, inclusions,
@@ -197,38 +204,39 @@ Jos asked for more content on the site (more about the animals and orangutans,
 the jungle, and how to get to Bukit Lawang). We deliberately keep this much
 smaller than professional agency sites: a few focused, easy-to-maintain pages.
 The navigation gets a single "Info" item that links to a hub page
-(`info.html`) instead of a dropdown menu.
+(`info/index.html`) instead of a dropdown menu.
 
 Done:
 
-- [x] Skeleton pages `info.html`, `getting-there.html`, `national-park.html`,
-      `wildlife.html`, linked from the navigation and listed in `sitemap.xml`.
+- [x] Moved all info pages into `info/` (the hub is now `info/index.html`).
+- [x] Skeleton pages `info.html`, `info/getting-there.html`, `info/national-park.html`,
+      `info/wildlife.html`, linked from the navigation and listed in `sitemap.xml`.
 - [x] Fixed the "Tours" navigation link (was built as `/tours/...` and
       `..//tours/...`, which broke `file://` and project URLs).
 
 To do:
 
-- [x] Filled `getting-there.html` with general travel information (no
+- [x] Filled `info/getting-there.html` with general travel information (no
       prices; travel times are approximate ranges from public travel guides).
       A link to the route on Google Maps is used instead of an embedded map
       or a drawn map image (no third-party embed, nothing to maintain).
       Open points are listed under "Open questions for Jos" below.
-- [x] Filled `wildlife.html`: Sumatran orangutan facts from public sources,
+- [x] Filled `info/wildlife.html`: Sumatran orangutan facts from public sources,
       semi-wild vs. wild orangutans, profiles of the three confirmed monkey
       species (Thomas leaf monkey, long-tailed and pig-tailed macaque) and a
-      no-guarantee note linking to the jungle rules on `national-park.html`.
-- [ ] Add more species to `wildlife.html` once Jos confirms them.
-- [x] Added `packing-list.html` (linked from `info.html` and the FAQ answer
+      no-guarantee note linking to the jungle rules on `info/national-park.html`.
+- [ ] Add more species to `info/wildlife.html` once Jos confirms them.
+- [x] Added `info/packing-list.html` (linked from `info/index.html` and the FAQ answer
       "What should I bring?"). The FAQ list from Jos is the base; general
       items like a headlamp, dry bags and toiletries were added, and later
       general jungle trekking tips (clothing colours, backpack size, first
       aid kit), written in our own words.
-- [x] Added `travel-tips.html` (linked from `info.html`). Visa and entry
+- [x] Added `info/travel-tips.html` (linked from `info/index.html`). Visa and entry
       information was checked against current public sources (e-VOA, All
       Indonesia arrival card) and links to the official immigration
       websites. Visa rules change often: review this page at least once a
       year.
-- [x] Filled `national-park.html` with general information from public
+- [x] Filled `info/national-park.html` with general information from public
       sources: the park and UNESCO status, Bukit Lawang's orangutan history,
       threats, access only with permit and licensed guide, jungle rules,
       how to recognize a licensed (HPI) guide, and the standard prices set by
@@ -238,7 +246,7 @@ To do:
 - [ ] Add photos to the info pages and info cards (ideally Jos' own photos,
       e.g. from his Instagram, with confirmed permission).
 - [ ] Have Jos (or the project owner) review general background texts before
-      publishing, starting with `getting-there.html`.
+      publishing, starting with `info/getting-there.html`.
 - [ ] Extend `faq.html` with practical questions, answers from Jos: Wi-Fi and
       electricity at the camp, vegetarian food, children and minimum age,
       leeches, travel insurance, luggage storage during the trek.
@@ -271,7 +279,7 @@ Tours:
       included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
 - [ ] Itinerary times and tour descriptions that are still generic.
 
-Getting there (`getting-there.html`):
+Getting there (`info/getting-there.html`):
 
 - [ ] Which transport option does Jos recommend to his guests?
 - [ ] Does he offer a transfer from the Bukit Lawang bus station (the FAQ
@@ -282,25 +290,25 @@ Getting there (`getting-there.html`):
 - [ ] Should guests arrive the day before their trek, or can they start on
       the day they arrive?
 
-National park and wildlife (`national-park.html`, `wildlife.html`):
+National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
 - [ ] Are the other guides in Jos' team HPI-licensed too?
-- [ ] Are the jungle rules on `national-park.html` complete and correct
+- [ ] Are the jungle rules on `info/national-park.html` complete and correct
       (e.g. telling the guide about illness, no camera flash)?
 - [ ] Which animals does he regularly see on his treks besides long-tailed
       macaques, Thomas leaf monkeys, pig-tailed macaques and orangutans?
       (e.g. gibbons, hornbills, monitor lizards), ideally with his own photos.
-- [ ] Is the text about semi-wild orangutans on `wildlife.html` accurate for
+- [ ] Is the text about semi-wild orangutans on `info/wildlife.html` accurate for
       today, and does he want to add tips for orangutan encounters?
 
-Travel tips (`travel-tips.html`):
+Travel tips (`info/travel-tips.html`):
 
 - [ ] Does Jos accept payment in Indonesian Rupiah, euros, or both?
 - [ ] Are there any ATMs in Bukit Lawang now, or only cash at hotels?
 - [ ] When is the rainy season around Bukit Lawang, and are treks offered
       all year? (The page currently says trekking is possible all year.)
 
-Packing list (`packing-list.html`):
+Packing list (`info/packing-list.html`):
 
 - [ ] Are leech socks or anything else specific worth recommending?
 

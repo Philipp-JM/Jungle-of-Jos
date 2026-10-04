@@ -1,6 +1,7 @@
 (function () {
-  // Same relative-path logic as js/nav.js: pages in tours/ need "../"
-  var rootPrefix = window.location.pathname.includes('/tours/') ? '../' : '';
+  // Same relative-path logic as js/nav.js: derived from this script's own src
+  var scriptSrc = document.currentScript.getAttribute('src');
+  var rootPrefix = scriptSrc.slice(0, scriptSrc.lastIndexOf('js/'));
 
   document.querySelectorAll('.footer-mount').forEach(function (mount) {
     var footer = document.createElement('footer');
