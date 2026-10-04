@@ -374,6 +374,84 @@ section {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Dropdown submenu (the "Info" item, see nav.js): the parent link keeps
+   going to the hub page, the arrow button next to it opens the submenu. */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-row {
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown-row a {
+  padding-right: 0.4rem;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle:focus-visible {
+  background-color: var(--color-accent-soft);
+  border-color: var(--color-accent-soft-border);
+}
+
+/* Small chevron drawn with borders, so no icon font or image is needed. */
+.nav-dropdown-arrow {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.nav-dropdown.is-open .nav-dropdown-arrow {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.nav-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 16rem;
+  padding: var(--spacing-sm);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  z-index: 110;
+}
+
+.nav-dropdown.is-open .nav-submenu {
+  display: block;
+}
+
+.nav-submenu a {
+  display: block;
+  font-weight: 500;
+}
+
+/* Open on mouse hover on wide screens only; touch devices use the button. */
+@media (hover: hover) and (min-width: 701px) {
+  .nav-dropdown:hover .nav-submenu {
+    display: block;
+  }
+}
+
 @media (max-width: 700px) {
   .nav-toggle {
     display: flex;
@@ -397,11 +475,35 @@ section {
   }
 
   .nav-links.is-open {
-    max-height: 400px; /* large enough to fit all links; not a hard content limit */
+    /* Fits all links plus an expanded submenu; scrolls on very short screens. */
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
   }
 
   .nav-links a {
     padding: 0.85rem 1rem;
+  }
+
+  /* Inside the mobile menu the submenu expands in place, indented. */
+  .nav-dropdown-row {
+    justify-content: space-between;
+  }
+
+  .nav-dropdown-row a {
+    flex: 1;
+  }
+
+  .nav-dropdown-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .nav-submenu {
+    position: static;
+    min-width: 0;
+    padding: 0 0 0 var(--spacing-md);
+    border: none;
+    box-shadow: none;
   }
 }
 

@@ -24,7 +24,21 @@
           '<ul class="nav-links" id="primary-navigation">' +
             '<li><a href="' + rootPrefix + 'about.html">About</a></li>' +
             '<li><a href="' + rootPrefix + 'tours/all-tours.html">Tours</a></li>' +
-            '<li><a href="' + rootPrefix + 'info/index.html">Info</a></li>' +
+            '<li class="nav-dropdown">' +
+              '<div class="nav-dropdown-row">' +
+                '<a href="' + rootPrefix + 'info/index.html">Info</a>' +
+                '<button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="info-submenu" aria-label="Show Info pages">' +
+                  '<span class="nav-dropdown-arrow" aria-hidden="true"></span>' +
+                '</button>' +
+              '</div>' +
+              '<ul class="nav-submenu" id="info-submenu">' +
+                '<li><a href="' + rootPrefix + 'info/getting-there.html">Getting to Bukit Lawang</a></li>' +
+                '<li><a href="' + rootPrefix + 'info/national-park.html">The Jungle &amp; National Park</a></li>' +
+                '<li><a href="' + rootPrefix + 'info/wildlife.html">Orangutans &amp; Wildlife</a></li>' +
+                '<li><a href="' + rootPrefix + 'info/packing-list.html">Packing List</a></li>' +
+                '<li><a href="' + rootPrefix + 'info/travel-tips.html">Travel Tips &amp; Visa</a></li>' +
+              '</ul>' +
+            '</li>' +
             '<li><a href="' + rootPrefix + 'faq.html">FAQ</a></li>' +
             '<li><a href="' + (isHomePage ? '#contact' : homePath + '#contact') + '">Contact</a></li>' +
           '</ul>' +
@@ -51,9 +65,10 @@
       document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
     });
 
+    // True while the mobile menu or a dropdown submenu is open, so the
+    // header doesn't hide itself from under the user.
     function menuIsOpen() {
-      var links = header.querySelector('.nav-links');
-      return links && links.classList.contains('is-open');
+      return header.querySelector('.nav-links.is-open, .nav-dropdown.is-open') !== null;
     }
 
     function isAtTop() {
@@ -107,6 +122,48 @@
         links.classList.remove('is-open');
         toggle.classList.remove('is-active');
         toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+
+  // Dropdown submenus (currently only "Info"). The parent link still goes to
+  // the hub page; the small arrow button next to it opens the submenu. On
+  // wide screens it also opens on mouse hover (CSS only), inside the mobile
+  // menu it expands in place.
+  document.querySelectorAll('.nav-dropdown').forEach(function (dropdown) {
+    var button = dropdown.querySelector('.nav-dropdown-toggle');
+
+    function setOpen(isOpen) {
+      dropdown.classList.toggle('is-open', isOpen);
+      button.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    button.addEventListener('click', function () {
+      setOpen(!dropdown.classList.contains('is-open'));
+    });
+
+    // Close on a click anywhere outside the dropdown.
+    document.addEventListener('click', function (event) {
+      if (!dropdown.contains(event.target)) setOpen(false);
+    });
+
+    // Close with Escape and give focus back to the arrow button.
+    dropdown.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && dropdown.classList.contains('is-open')) {
+        setOpen(false);
+        button.focus();
+      }
+    });
+
+    // Close once keyboard focus moves on past the submenu.
+    dropdown.addEventListener('focusout', function (event) {
+      if (event.relatedTarget && !dropdown.contains(event.relatedTarget)) setOpen(false);
+    });
+
+    // Close after a submenu link is used.
+    dropdown.querySelectorAll('.nav-submenu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setOpen(false);
       });
     });
   });
