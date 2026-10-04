@@ -477,6 +477,16 @@ section {
   margin-bottom: var(--spacing-md);
 }
 
+/* Once image and text stack (narrow screens), center the "More about Jos"
+   button under the centered heading */
+@media (max-width: 800px) {
+  .about-text > .btn {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
 /* =================================================
    TOURS SECTION
    ================================================= */
@@ -1187,53 +1197,6 @@ section {
     margin-left: var(--spacing-md);
     margin-right: var(--spacing-md);
   }
-}
-
-/* =================================================
-   WHATSAPP "COMING SOON" TOAST
-   ================================================= */
-/* Same red accent as .construction-note (icon + border), but on a solid
-   background rather than construction-note's translucent tint - this floats
-   over whatever section the clicked button happens to be in (including the
-   dark hero), and a translucent box loses all contrast there. Positioned
-   above whichever WhatsApp button was clicked (see js/whatsapp-notice.js).
-   Fades in fast, holds for a few seconds, then fades out slowly - timings
-   live in the JS file, not here, since JS drives the class toggling.
-   position: absolute (not fixed) and top/left set in document coordinates
-   (button rect + scroll offset) so the toast scrolls away with the button
-   instead of staying pinned to the viewport and covering other content. */
-.whatsapp-coming-soon-toast {
-  position: absolute;
-  z-index: 1000;
-  display: none;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-  max-width: 280px;
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-danger-soft-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-  color: var(--color-text);
-  font-size: 0.85rem;
-  line-height: 1.4;
-  text-align: left;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  pointer-events: none;
-}
-
-.whatsapp-coming-soon-toast.is-visible {
-  opacity: 1;
-  transition: opacity 0.2s ease;
-}
-
-.whatsapp-coming-soon-toast-icon {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  margin-top: 0.1rem;
-  color: var(--color-danger-dark);
 }
 
 /* =================================================

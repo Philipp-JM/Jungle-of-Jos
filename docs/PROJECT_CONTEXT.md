@@ -169,11 +169,12 @@ Implemented:
 - Shared navigation, footer, and tour CTA scripts.
 - Automatic copyright year in the shared footer.
 - A working Instagram link in the shared tour CTA: `jungle_of_jos`.
+- WhatsApp buttons link to Jos' number +62 822-7775-2204 via
+  `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
 - Image files in `images/` and `images/gallery/`, with some already referenced.
 
 Still incomplete or requiring review:
 
-- WhatsApp links are still `href="#"` placeholders.
 - Some pages have empty image sources or placeholder alt text. Existing image
   files are mixed with unverified assets; check ownership, suitability, and
   correct placement before publication.
@@ -249,7 +250,6 @@ still missing.
 
 General:
 
-- [ ] WhatsApp number for all WhatsApp links (currently `href="#"`).
 - [ ] Hero image for the home page, and photos he owns for the info pages.
       Confirm ownership of the existing images in `images/`.
 - [ ] Domain: whether to buy one, and who owns and pays for it long term.
