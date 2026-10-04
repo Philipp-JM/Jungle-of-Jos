@@ -6,8 +6,36 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://jungle-of-jos.pages.dev/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://jungle-of-jos.pages.dev/faq.html</loc>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jungle-of-jos.pages.dev/info/index.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jungle-of-jos.pages.dev/info/getting-there.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jungle-of-jos.pages.dev/info/national-park.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jungle-of-jos.pages.dev/info/wildlife.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jungle-of-jos.pages.dev/info/packing-list.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jungle-of-jos.pages.dev/info/travel-tips.html</loc>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jungle-of-jos.pages.dev/tours/all-tours.html</loc>
@@ -52,6 +80,10 @@
   <url>
     <loc>https://jungle-of-jos.pages.dev/tours/orangutan-monitoring.html</loc>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jungle-of-jos.pages.dev/privacy.html</loc>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

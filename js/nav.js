@@ -1,7 +1,10 @@
 (function () {
-  var isTourPage = window.location.pathname.includes('/tours/');
-  var rootPrefix = isTourPage ? '../' : '';
-  var isHomePage = !isTourPage && (
+  // Path from the current page back to the site root, taken from this
+  // script's own src: "js/nav.js" -> "", "../js/nav.js" -> "../". This works
+  // for pages in any subfolder (tours/, info/, ...) without listing folders.
+  var scriptSrc = document.currentScript.getAttribute('src');
+  var rootPrefix = scriptSrc.slice(0, scriptSrc.lastIndexOf('js/'));
+  var isHomePage = rootPrefix === '' && (
     window.location.pathname.endsWith('/') ||
     window.location.pathname.endsWith('/index.html')
   );
@@ -19,8 +22,9 @@
             '<span class="nav-toggle-bar"></span>' +
           '</button>' +
           '<ul class="nav-links" id="primary-navigation">' +
-            '<li><a href="' + (isHomePage ? '#about' : homePath + '#about') + '">About</a></li>' +
-            '<li><a href="' + rootPrefix + '/tours/all-tours.html">Tours</a></li>' +
+            '<li><a href="' + rootPrefix + 'about.html">About</a></li>' +
+            '<li><a href="' + rootPrefix + 'tours/all-tours.html">Tours</a></li>' +
+            '<li><a href="' + rootPrefix + 'info/index.html">Info</a></li>' +
             '<li><a href="' + rootPrefix + 'faq.html">FAQ</a></li>' +
             '<li><a href="' + (isHomePage ? '#contact' : homePath + '#contact') + '">Contact</a></li>' +
           '</ul>' +
