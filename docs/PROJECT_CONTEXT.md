@@ -225,8 +225,7 @@ Tours:
 
 Getting there (`getting-there.html`):
 
-- [ ] Which transport option does Jos recommend to his guests, and can he
-      arrange a private car or tourist minibus from Medan or the airport?
+- [ ] Which transport option does Jos recommend to his guests?
 - [ ] Does he offer a transfer from the Bukit Lawang bus station (the FAQ
       mentions it), and is it free or paid?
 - [ ] Is there still a direct bus from Kualanamu Airport to Bukit Lawang?
@@ -234,7 +233,6 @@ Getting there (`getting-there.html`):
       Lawang, Bukit Lawang to Berastagi and Lake Toba)?
 - [ ] Should guests arrive the day before their trek, or can they start on
       the day they arrive?
-- [ ] Are there working ATMs in or near Bukit Lawang?
 - [ ] Best time of year to visit, and when the rainy season is.
 
 National park and wildlife (`national-park.html`, `wildlife.html`):
