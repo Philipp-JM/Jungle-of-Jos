@@ -56,6 +56,8 @@ the number of tours and the amount of detail grew. The current structure is:
   guides and standard prices.
 - `packing-list.html`: what to bring for short and multi-day treks, based on
   the FAQ packing list plus common jungle trekking essentials.
+- `travel-tips.html`: Indonesia travel tips: visa and entry, money, health,
+  emergency numbers, weather, phone and internet, local customs.
 - `wildlife.html`: Sumatran orangutans (facts, semi-wild vs. wild) and the
   other confirmed monkey species, with a no-guarantee note.
 - `tours/all-tours.html`: complete tour overview.
@@ -191,7 +193,14 @@ To do:
 - [ ] Add more species to `wildlife.html` once Jos confirms them.
 - [x] Added `packing-list.html` (linked from `info.html` and the FAQ answer
       "What should I bring?"). The FAQ list from Jos is the base; general
-      items like a headlamp, dry bags and toiletries were added.
+      items like a headlamp, dry bags and toiletries were added, and later
+      general jungle trekking tips (clothing colours, backpack size, first
+      aid kit), written in our own words.
+- [x] Added `travel-tips.html` (linked from `info.html`). Visa and entry
+      information was checked against current public sources (e-VOA, All
+      Indonesia arrival card) and links to the official immigration
+      websites. Visa rules change often: review this page at least once a
+      year.
 - [x] Filled `national-park.html` with general information from public
       sources: the park and UNESCO status, Bukit Lawang's orangutan history,
       threats, access only with permit and licensed guide, jungle rules,
@@ -248,7 +257,6 @@ Getting there (`getting-there.html`):
       Lawang, Bukit Lawang to Berastagi and Lake Toba)?
 - [ ] Should guests arrive the day before their trek, or can they start on
       the day they arrive?
-- [ ] Best time of year to visit, and when the rainy season is.
 
 National park and wildlife (`national-park.html`, `wildlife.html`):
 
@@ -261,6 +269,13 @@ National park and wildlife (`national-park.html`, `wildlife.html`):
       (e.g. gibbons, hornbills, monitor lizards), ideally with his own photos.
 - [ ] Is the text about semi-wild orangutans on `wildlife.html` accurate for
       today, and does he want to add tips for orangutan encounters?
+
+Travel tips (`travel-tips.html`):
+
+- [ ] Does Jos accept payment in Indonesian Rupiah, euros, or both?
+- [ ] Are there any ATMs in Bukit Lawang now, or only cash at hotels?
+- [ ] When is the rainy season around Bukit Lawang, and are treks offered
+      all year? (The page currently says trekking is possible all year.)
 
 Packing list (`packing-list.html`):
 
