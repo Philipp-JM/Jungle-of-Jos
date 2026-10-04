@@ -43,7 +43,7 @@ when the shared element should change on every page.
 
 For a quick check, open `index.html`, `faq.html`, and at least one file in
 `tours/` directly in a browser. Test navigation links, images, FAQ accordion,
-and contact links. GitHub Pages can publish this repository without a build
+and contact links. The site is published on Cloudflare Pages without a build
 command; the repository owner controls the publishing settings.
 
 For the background, decisions, and known open issues, see

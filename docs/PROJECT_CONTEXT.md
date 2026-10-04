@@ -51,7 +51,8 @@ the number of tours and the amount of detail grew. The current structure is:
 - `about.html`: about Jos, his HPI license, his team and how he guides. The
   home page only shows a short About teaser that links here, and the "About"
   navigation item points to this page.
-- `privacy.html`: privacy policy (draft, linked from the footer).
+- `privacy.html`: privacy policy (linked from the footer). Contact email:
+  `josjungletour@gmail.com`.
 - `faq.html`: booking, payment, equipment, weather, and general FAQ sections.
 - `info.html`: travel info hub with link cards to the info pages below.
 - `getting-there.html`: how to get to Bukit Lawang from Medan / Kualanamu
@@ -108,11 +109,12 @@ jungle green, a warm gold accent, WhatsApp green, and Instagram pink.
 
 ## Hosting and domain
 
-GitHub Pages is the preferred hosting option because it is free, static, and
-fits the one-account maintenance model. Cloudflare Pages and Netlify are valid
-alternatives, but are not currently selected.
+The site is hosted exclusively on Cloudflare Pages (free, static, no build
+step), currently at `jungle-of-jos.pages.dev`. A data processing agreement
+with Cloudflare is in place. No tracking, analytics or other third-party
+services are enabled; keep it that way, or update `privacy.html` first.
 
-The domain decision is still open. Launching first on the free GitHub Pages
+The domain decision is still open. Launching on the free `pages.dev`
 subdomain is acceptable. If a custom domain is purchased, long-term ownership
 and payment responsibility must be agreed with Jos first.
 
@@ -131,7 +133,7 @@ confirms what the activity includes.
 
 ## Content and factual guidance
 
-Jos is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
+Jos (real first name: Justra) is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
 He leads treks himself. His team is currently a cook; when needed he brings in
 other local guides as partners, and porters on request. He speaks Indonesian
 and English, and can help arrange onward travel to Medan, Berastagi, or Lake Toba.
@@ -316,14 +318,10 @@ FAQ (`faq.html`):
       (Not mentioned on the site; there is no scientific evidence that salt
       repels snakes.)
 
-Privacy policy (`privacy.html`, draft):
+Privacy policy (`privacy.html`):
 
-- [ ] Jos' full name as it should appear as the responsible person.
-- [ ] Contact email address (or confirm WhatsApp only).
-- [ ] Final hosting provider (Cloudflare Pages or GitHub Pages), then add
-      its name and the link to its privacy policy.
-- [ ] Is sharing booking details with partner guides or transport providers
-      described correctly?
+- [ ] Jos' last name (his first name is Justra; the project owner adds the
+      last name).
 - [ ] Ideally have the draft checked by someone with legal knowledge before
       launch.
 
