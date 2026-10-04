@@ -248,9 +248,8 @@ To do:
       e.g. from his Instagram, with confirmed permission).
 - [ ] Have Jos (or the project owner) review general background texts before
       publishing, starting with `info/getting-there.html`.
-- [ ] Extend `faq.html` with practical questions, answers from Jos: Wi-Fi and
-      electricity at the camp, vegetarian food, children and minimum age,
-      leeches, travel insurance, luggage storage during the trek.
+- [x] Extended `faq.html` to 20 questions in three categories. Group size
+      and children still show an "under construction" note.
 - [x] Added `about.html` (Meet Jos, licensed guide, team, how Jos guides,
       CTA) and shortened the About section on the home page to a teaser.
       Guest reviews are intentionally left out.
