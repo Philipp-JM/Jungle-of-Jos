@@ -50,8 +50,10 @@ the number of tours and the amount of detail grew. The current structure is:
 - `index.html`: home page with hero, About, featured tours, gallery, and contact.
 - `faq.html`: booking, payment, equipment, weather, and general FAQ sections.
 - `info.html`: travel info hub with link cards to the info pages below.
-- `getting-there.html`, `national-park.html`, `wildlife.html`: info pages
-  (currently empty skeletons, see "Content expansion" below).
+- `getting-there.html`: how to get to Bukit Lawang from Medan / Kualanamu
+  Airport and onward travel.
+- `national-park.html`, `wildlife.html`: info pages (currently empty
+  skeletons, see "Content expansion" below).
 - `tours/all-tours.html`: complete tour overview.
 - `tours/3-hour.html`, `tours/1-day.html`, `tours/2-day.html`, `tours/3-day.html`,
   `tours/4-day.html`, `tours/5-day.html`, `tours/6-day.html`, `tours/7-day.html`,
@@ -163,18 +165,16 @@ Done:
 
 - [x] Skeleton pages `info.html`, `getting-there.html`, `national-park.html`,
       `wildlife.html`, linked from the navigation and listed in `sitemap.xml`.
-      Each skeleton lists its planned sections in an HTML comment.
 - [x] Fixed the "Tours" navigation link (was built as `/tours/...` and
       `..//tours/...`, which broke `file://` and project URLs).
 
 To do:
 
-- [ ] Fill `getting-there.html`: Kualanamu Airport (KNO) / Medan to Bukit
-      Lawang by private car/taxi, tourist shuttle and public bus via Binjai
-      (approximate travel times, pros and cons, no prices); arriving in Bukit
-      Lawang (pick-up at the bus station, accommodation); cash/ATMs (link to
-      the FAQ), SIM card; best time to travel / rainy season; onward travel to
-      Lake Toba, Berastagi or Medan. Confirm details with Jos.
+- [x] Filled `getting-there.html` with general travel information (no
+      prices; travel times are approximate ranges from public travel guides).
+      A link to the route on Google Maps is used instead of an embedded map
+      or a drawn map image (no third-party embed, nothing to maintain).
+      Open points are listed under "Open questions for Jos" below.
 - [ ] Fill `wildlife.html`: Sumatran orangutan (status, Bohorok rehabilitation
       centre history, semi-wild vs. wild); short profiles of other species,
       only those Jos confirms; rules for wildlife encounters (no feeding,
@@ -187,7 +187,7 @@ To do:
 - [ ] Add photos to the info pages and info cards (ideally Jos' own photos,
       e.g. from his Instagram, with confirmed permission).
 - [ ] Have Jos (or the project owner) review general background texts before
-      publishing.
+      publishing, starting with `getting-there.html`.
 - [ ] Extend `faq.html` with practical questions, answers from Jos: Wi-Fi and
       electricity at the camp, vegetarian food, children and minimum age,
       leeches, travel insurance, luggage storage during the trek.
@@ -200,6 +200,61 @@ To do:
 - A larger visual polish pass remains optional and should not compromise easy
   maintenance or mobile readability.
 
+## Open questions for Jos
+
+All content questions that need an answer from Jos (the client) are collected
+here, not as comments in the code. Remove a point once it is answered and the
+site is updated. Visible `PLACEHOLDER` text on pages marks where an answer is
+still missing.
+
+General:
+
+- [ ] WhatsApp number for all WhatsApp links (currently `href="#"`).
+- [ ] Hero image for the home page, and photos he owns for the info pages.
+      Confirm ownership of the existing images in `images/`.
+- [ ] Domain: whether to buy one, and who owns and pays for it long term.
+
+Tours:
+
+- [ ] Orangutan Monitoring: what the activity includes, its format and a
+      short description (see `tours/orangutan-monitoring.html` and the two
+      `PLACEHOLDER` descriptions in `tours/all-tours.html`).
+- [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
+      included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
+- [ ] Itinerary times and tour descriptions that are still generic.
+
+Getting there (`getting-there.html`):
+
+- [ ] Which transport option does Jos recommend to his guests, and can he
+      arrange a private car or tourist minibus from Medan or the airport?
+- [ ] Does he offer a transfer from the Bukit Lawang bus station (the FAQ
+      mentions it), and is it free or paid?
+- [ ] Is there still a direct bus from Kualanamu Airport to Bukit Lawang?
+- [ ] Are the travel times on the page realistic (airport/Medan to Bukit
+      Lawang, Bukit Lawang to Berastagi and Lake Toba)?
+- [ ] Should guests arrive the day before their trek, or can they start on
+      the day they arrive?
+- [ ] Are there working ATMs in or near Bukit Lawang?
+- [ ] Best time of year to visit, and when the rainy season is.
+
+National park and wildlife (`national-park.html`, `wildlife.html`):
+
+- [ ] Do park permits or entrance fees apply, and are they included in the
+      tour prices?
+- [ ] Which animals does he regularly see on his treks besides long-tailed
+      macaques, Thomas leaf monkeys, pig-tailed macaques and orangutans?
+
+FAQ (`faq.html`):
+
+- [ ] Answers for: Wi-Fi and electricity at the camp, vegetarian food,
+      children and minimum age, leeches, travel insurance, luggage storage
+      during the trek.
+
+About (only if a separate `about.html` is created):
+
+- [ ] More about his story, his guide team and his approach to nature and
+      animals; guest reviews he is happy to publish.
+
 ## Working style
 
 Keep changes small and explain structural or UX trade-offs before making them.
@@ -207,3 +262,7 @@ Prefer transparent HTML and existing local patterns over new abstractions.
 Do not invent prices, itineraries, inclusions, wildlife guarantees, contact
 details, or translations. When a fact is missing, leave a clear placeholder or
 ask for confirmation.
+
+Code comments are only for technical notes (including technical TODOs). Content
+questions and to-dos that need the client go into "Open questions for Jos"
+above, never into HTML or code comments.
