@@ -53,6 +53,8 @@ the number of tours and the amount of detail grew. The current structure is:
   navigation item points to this page.
 - `privacy.html`: privacy policy (linked from the footer). Contact email:
   `josjungletour@gmail.com`.
+- `404.html`: "page not found" page for the hosting (see "Hosting and
+  domain").
 - `faq.html`: booking, payment, equipment, weather, and general FAQ sections.
 - `info/index.html`: travel info hub with link cards to the info pages below.
 - `info/getting-there.html`: how to get to Bukit Lawang from Medan / Kualanamu
@@ -133,6 +135,23 @@ the operator. See "Legal and privacy" under "Open questions for Jos".
 The domain decision is still open. Launching on the free `pages.dev`
 subdomain is acceptable. If a custom domain is purchased, long-term ownership
 and payment responsibility must be agreed with Jos first.
+
+The full domain only appears in three places (everything else uses relative
+paths): `robots.txt` (sitemap line), `sitemap.xml`, and the
+`<link rel="canonical">` tag of every page. When the domain changes, search
+and replace `https://jungle-of-jos.pages.dev` in all files.
+
+Cloudflare Pages redirects `.html` URLs to URLs without the extension
+(`/faq.html` -> `/faq`, `/index.html` -> `/`, `/info/index.html` -> `/info/`).
+Sitemap and canonical tags therefore use these final URLs, so search engines
+do not hit a redirect. Internal links keep the `.html` ending, because that
+is what works when a file is opened directly (`file://`).
+
+`404.html` is shown by Cloudflare Pages for every unknown URL. Unlike all
+other pages it uses root-absolute paths (`/css/style.css`), because it can be
+served from any folder. It is marked `noindex` and is deliberately not in the
+navigation or `sitemap.xml`. Without this file Cloudflare Pages would serve
+the home page for unknown URLs.
 
 ## Tours and pricing
 
