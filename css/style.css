@@ -763,10 +763,15 @@ section {
 .site-footer a {
   color: #fff;
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 .site-footer-note {
-  margin-top: var(--spacing-xs);
+  max-width: 480px;
+  margin: var(--spacing-sm) auto 0;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
   opacity: 0.75;
 }
 

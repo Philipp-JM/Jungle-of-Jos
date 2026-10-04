@@ -2,6 +2,24 @@
 
 Static website for Jos's jungle trekking tours in Bukit Lawang, Sumatra.
 
+## How to contribute
+
+Ideas, corrections and help are very welcome!
+
+- **Preferred: open an issue.** Go to the **Issues** tab of this repository on
+  GitHub and click **New issue**. Describe what you would like to change or
+  add, or where you found a mistake. You need a (free) GitHub account for this.
+- **Pull requests are welcome too.** If you want to change something yourself:
+  1. Fork this repository (button **Fork** at the top right on GitHub).
+  2. Make your changes in your fork, ideally on a new branch.
+  3. Open a pull request from your fork to this repository and briefly
+     describe what you changed and why.
+
+Please read the section below and
+[`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md) first: the site
+deliberately stays plain HTML, CSS and JavaScript without frameworks or build
+tools, and prices, tour details and other facts must never be made up.
+
 ## For volunteers
 
 There is no build step. Open an HTML file in a browser to preview changes. The
