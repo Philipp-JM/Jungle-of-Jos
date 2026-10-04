@@ -197,9 +197,9 @@ Implemented:
 
 Still incomplete or requiring review:
 
-- Some pages have empty image sources or placeholder alt text. Existing image
-  files are mixed with unverified assets; check ownership, suitability, and
-  correct placement before publication.
+- All photos in `images/` were sent by Jos and are his own, so they may be
+  used on the site. The home page hero image is still an empty placeholder.
+  Only add new images whose ownership is equally clear.
 - FAQ answers, itinerary times, several inclusions, and some tour descriptions
   still contain `PLACEHOLDER` text and require facts from Jos.
 - Prices need to be synchronized from `tours/all-tours.html` to detail pages.
@@ -272,8 +272,8 @@ still missing.
 
 General:
 
-- [ ] Hero image for the home page, and photos he owns for the info pages.
-      Confirm ownership of the existing images in `images/`.
+- [ ] Hero image for the home page, and more photos he owns for the info
+      pages. (The existing images in `images/` are confirmed as Jos' own.)
 - [ ] Domain: whether to buy one, and who owns and pays for it long term.
 
 Tours:
