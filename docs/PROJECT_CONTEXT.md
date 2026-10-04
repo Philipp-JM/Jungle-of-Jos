@@ -54,8 +54,8 @@ the number of tours and the amount of detail grew. The current structure is:
   Airport and onward travel.
 - `national-park.html`: Gunung Leuser National Park, park rules, licensed
   guides and standard prices.
-- `wildlife.html`: info page (currently an empty skeleton, see "Content
-  expansion" below).
+- `wildlife.html`: Sumatran orangutans (facts, semi-wild vs. wild) and the
+  other confirmed monkey species, with a no-guarantee note.
 - `tours/all-tours.html`: complete tour overview.
 - `tours/3-hour.html`, `tours/1-day.html`, `tours/2-day.html`, `tours/3-day.html`,
   `tours/4-day.html`, `tours/5-day.html`, `tours/6-day.html`, `tours/7-day.html`,
@@ -182,11 +182,11 @@ To do:
       A link to the route on Google Maps is used instead of an embedded map
       or a drawn map image (no third-party embed, nothing to maintain).
       Open points are listed under "Open questions for Jos" below.
-- [ ] Fill `wildlife.html`: Sumatran orangutan (status, Bohorok rehabilitation
-      centre history, semi-wild vs. wild); short profiles of other species,
-      only those Jos confirms; rules for wildlife encounters (no feeding,
-      keep distance, no litter); clear note that sightings are never
-      guaranteed.
+- [x] Filled `wildlife.html`: Sumatran orangutan facts from public sources,
+      semi-wild vs. wild orangutans, profiles of the three confirmed monkey
+      species (Thomas leaf monkey, long-tailed and pig-tailed macaque) and a
+      no-guarantee note linking to the jungle rules on `national-park.html`.
+- [ ] Add more species to `wildlife.html` once Jos confirms them.
 - [x] Filled `national-park.html` with general information from public
       sources: the park and UNESCO status, Bukit Lawang's orangutan history,
       threats, access only with permit and licensed guide, jungle rules,
@@ -253,6 +253,9 @@ National park and wildlife (`national-park.html`, `wildlife.html`):
       (e.g. telling the guide about illness, no camera flash)?
 - [ ] Which animals does he regularly see on his treks besides long-tailed
       macaques, Thomas leaf monkeys, pig-tailed macaques and orangutans?
+      (e.g. gibbons, hornbills, monitor lizards), ideally with his own photos.
+- [ ] Is the text about semi-wild orangutans on `wildlife.html` accurate for
+      today, and does he want to add tips for orangutan encounters?
 
 FAQ (`faq.html`):
 

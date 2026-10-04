@@ -1254,6 +1254,11 @@ section {
   margin-bottom: var(--spacing-xs);
 }
 
+.info-option .tour-image {
+  border-radius: calc(var(--radius) - 6px);
+  margin-bottom: var(--spacing-md);
+}
+
 .info-option p:last-child {
   margin-bottom: 0;
 }
