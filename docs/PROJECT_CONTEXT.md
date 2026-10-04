@@ -122,6 +122,11 @@ Jos is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
 He leads treks himself with support from local guides, speaks functional
 English, and can help arrange onward travel to Medan, Berastagi, or Lake Toba.
 
+Jos holds an HPI guide license (Indonesian tour guide association). The
+national park permit is included in all tour prices; there are no extra
+costs. The minimum distance to orangutans and other wild animals is 10
+meters.
+
 Tours take place in the jungle around Bukit Lawang. Wildlife may include
 long-tailed macaques, Thomas leaf monkeys, pig-tailed macaques, and wild
 orangutans. Rare sightings must never be promised, especially on shorter tours.
@@ -242,13 +247,7 @@ Getting there (`getting-there.html`):
 
 National park and wildlife (`national-park.html`, `wildlife.html`):
 
-- [ ] Is Jos a licensed HPI guide, and are his team's guides licensed too?
-      Can guests ask to see his guide ID card? (`national-park.html` tells
-      visitors to ask for it.)
-- [ ] Minimum distance to orangutans: public sources say 10 meters, the
-      project owner remembers 6 meters. Which rule applies today?
-- [ ] Is the park permit (entrance fee) included in the tour prices, and
-      who arranges it?
+- [ ] Are the other guides in Jos' team HPI-licensed too?
 - [ ] Is there a maximum group size per guide?
 - [ ] Are the jungle rules on `national-park.html` complete and correct
       (e.g. telling the guide about illness, no camera flash)?
