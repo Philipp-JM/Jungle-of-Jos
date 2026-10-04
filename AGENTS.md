@@ -33,6 +33,9 @@ structure, shared scripts, pricing, or implementation status.
 - Never invent prices, itineraries, inclusions, wildlife guarantees, contact
   details, or translations. Leave a clear `PLACEHOLDER` or ask.
 - `tours/all-tours.html` is the source of truth for prices.
+- No content TODOs in code comments. Questions for the client go into
+  "Open questions for Jos" in `docs/PROJECT_CONTEXT.md`; code comments are
+  only for technical notes.
 - Do not use images of unknown ownership; add meaningful alt text.
 
 ## Working style
