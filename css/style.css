@@ -875,20 +875,6 @@ section {
   white-space: nowrap;
 }
 
-.site-footer-note {
-  max-width: 480px;
-  margin: var(--spacing-sm) auto 0;
-  padding-top: var(--spacing-sm);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 0.75rem; /* one step smaller than the copyright line (0.85rem) */
-  opacity: 0.75;
-}
-
-.site-footer-note a {
-  color: #fff;
-  font-weight: 600;
-}
-
 /* =================================================
    PAGE HEADER (for sub-pages like FAQ, tour details)
    ================================================= */

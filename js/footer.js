@@ -9,9 +9,7 @@
     footer.innerHTML =
       '<p>&copy; <span id="current-year">' + new Date().getFullYear() +
       '</span> Jungle of Jos. All rights reserved. &middot; ' +
-      '<a href="' + rootPrefix + 'privacy.html">Privacy Policy</a></p>' +
-      '<p class="site-footer-note">Voluntarily created by Philipp. Feel free to ' +
-      '<a href="https://github.com/Philipp-JM/Jungle-of-Jos#how-to-contribute" target="_blank" rel="noopener noreferrer">&rarr; contribute.</a></p>';
+      '<a href="' + rootPrefix + 'privacy.html">Privacy Policy</a></p>';
     mount.replaceWith(footer);
   });
 }());
