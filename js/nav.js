@@ -20,7 +20,8 @@
           '</button>' +
           '<ul class="nav-links" id="primary-navigation">' +
             '<li><a href="' + (isHomePage ? '#about' : homePath + '#about') + '">About</a></li>' +
-            '<li><a href="' + rootPrefix + '/tours/all-tours.html">Tours</a></li>' +
+            '<li><a href="' + rootPrefix + 'tours/all-tours.html">Tours</a></li>' +
+            '<li><a href="' + rootPrefix + 'info.html">Info</a></li>' +
             '<li><a href="' + rootPrefix + 'faq.html">FAQ</a></li>' +
             '<li><a href="' + (isHomePage ? '#contact' : homePath + '#contact') + '">Contact</a></li>' +
           '</ul>' +
