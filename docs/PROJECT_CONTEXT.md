@@ -123,8 +123,15 @@ confirms what the activity includes.
 ## Content and factual guidance
 
 Jos is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
-He leads treks himself with support from local guides, speaks functional
-English, and can help arrange onward travel to Medan, Berastagi, or Lake Toba.
+He leads treks himself with support from local guides, speaks Indonesian
+and English, and can help arrange onward travel to Medan, Berastagi, or Lake Toba.
+
+Confirmed by Jos for the FAQ: spontaneous bookings 1 to 2 days ahead are
+possible; with a tight schedule, guests should book 2 to 3 weeks in advance.
+Vegetarian or vegan food is possible if requested in advance. There is no
+electricity and no Wi-Fi in the jungle, and phone signal only in places. A
+porter can be arranged if requested in advance. Jos speaks Indonesian and
+English. Travel insurance is not legally required but strongly recommended.
 
 Jos holds an HPI guide license (Indonesian tour guide association). The
 national park permit is included in all tour prices; there are no extra
@@ -261,7 +268,6 @@ Getting there (`getting-there.html`):
 National park and wildlife (`national-park.html`, `wildlife.html`):
 
 - [ ] Are the other guides in Jos' team HPI-licensed too?
-- [ ] Is there a maximum group size per guide?
 - [ ] Are the jungle rules on `national-park.html` complete and correct
       (e.g. telling the guide about illness, no camera flash)?
 - [ ] Which animals does he regularly see on his treks besides long-tailed
@@ -281,16 +287,18 @@ Packing list (`packing-list.html`):
 
 - [ ] Is a sleeping bag or sheet needed on overnight treks, or is bedding
       provided at the camps?
-- [ ] Is there electricity at the camps (the page suggests a power bank)?
-- [ ] Do guests carry their own backpack on all treks, or are there porters
-      on longer treks?
 - [ ] Are leech socks or anything else specific worth recommending?
 
 FAQ (`faq.html`):
 
-- [ ] Answers for: Wi-Fi and electricity at the camp, vegetarian food,
-      children and minimum age, leeches, travel insurance, luggage storage
-      during the trek.
+- [ ] Is there a maximum group size? (The FAQ answer is currently an
+      "under construction" note.)
+- [ ] Can children join, and is there a minimum age? (Also an "under
+      construction" note.)
+- [ ] Are the answers about leeches and snakes correct?
+- [ ] River tubing: is it suitable for non-swimmers, and are life jackets
+      provided? Which tours include tubing?
+- [ ] Do porters cost extra, and how much?
 
 About (only if a separate `about.html` is created):
 

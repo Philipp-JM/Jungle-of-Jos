@@ -734,6 +734,22 @@ section {
   gap: var(--spacing-md);
 }
 
+/* Category headings between groups of FAQ items */
+.faq-category {
+  font-size: 1.3rem;
+  margin-top: var(--spacing-lg);
+}
+
+.faq-category:first-child {
+  margin-top: 0;
+}
+
+/* Friendly note for answers that are not written yet */
+.faq-answer .faq-pending {
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
 .faq-item {
   border: 1px solid var(--color-accent-soft-border);
   border-radius: var(--radius);
