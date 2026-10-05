@@ -12,7 +12,7 @@
     var buttons = document.createElement('div');
     buttons.className = 'contact-buttons';
     buttons.innerHTML =
-      '<a href="#" class="btn btn-whatsapp btn-large">Message on WhatsApp</a>' +
+      '<a target="_blank" rel="noopener noreferrer" href="https://wa.me/6282277752204" class="btn btn-whatsapp btn-large">Message on WhatsApp</a>' +
       '<a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/jungle_of_jos/" class="btn btn-instagram btn-large">Follow on Instagram</a>';
 
     section.appendChild(heading);

@@ -1,7 +1,57 @@
 /* Archivo (headings) is a neutral, sturdy modern grotesque - clean and
    confident without the whimsy of a display serif or the softness of a
    rounded sans. Paired with Inter for clean, neutral body text. */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Fonts are stored locally in /fonts (no requests to Google, no tracking).
+   Licenses: fonts/LICENSE-Inter.txt and fonts/LICENSE-Archivo.txt (SIL OFL 1.1). */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/inter-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/inter-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/inter-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/inter-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/archivo-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/archivo-latin-700-normal.woff2") format("woff2");
+}
 
 /* =================================================
    CSS VARIABLES - change colors/spacing here globally
@@ -324,6 +374,84 @@ section {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Dropdown submenu (the "Info" item, see nav.js): the parent link keeps
+   going to the hub page, the arrow button next to it opens the submenu. */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-row {
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown-row a {
+  padding-right: 0.4rem;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle:focus-visible {
+  background-color: var(--color-accent-soft);
+  border-color: var(--color-accent-soft-border);
+}
+
+/* Small chevron drawn with borders, so no icon font or image is needed. */
+.nav-dropdown-arrow {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.nav-dropdown.is-open .nav-dropdown-arrow {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.nav-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 16rem;
+  padding: var(--spacing-sm);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  z-index: 110;
+}
+
+.nav-dropdown.is-open .nav-submenu {
+  display: block;
+}
+
+.nav-submenu a {
+  display: block;
+  font-weight: 500;
+}
+
+/* Open on mouse hover on wide screens only; touch devices use the button. */
+@media (hover: hover) and (min-width: 701px) {
+  .nav-dropdown:hover .nav-submenu {
+    display: block;
+  }
+}
+
 @media (max-width: 700px) {
   .nav-toggle {
     display: flex;
@@ -347,11 +475,35 @@ section {
   }
 
   .nav-links.is-open {
-    max-height: 400px; /* large enough to fit all links; not a hard content limit */
+    /* Fits all links plus an expanded submenu; scrolls on very short screens. */
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
   }
 
   .nav-links a {
     padding: 0.85rem 1rem;
+  }
+
+  /* Inside the mobile menu the submenu expands in place, indented. */
+  .nav-dropdown-row {
+    justify-content: space-between;
+  }
+
+  .nav-dropdown-row a {
+    flex: 1;
+  }
+
+  .nav-dropdown-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .nav-submenu {
+    position: static;
+    min-width: 0;
+    padding: 0 0 0 var(--spacing-md);
+    border: none;
+    box-shadow: none;
   }
 }
 
@@ -466,11 +618,32 @@ section {
   background-image: var(--image-missing);
   background-size: cover;
   background-position: center;
+  object-fit: cover; /* crop instead of stretching photos with another ratio */
   box-shadow: var(--shadow-sm);
+}
+
+/* Upright photo variant (e.g. about.html) */
+.about-image-portrait {
+  aspect-ratio: 3 / 4;
+  max-width: 340px;
 }
 
 .about-text {
   flex: 1 1 400px;
+}
+
+.about-text p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Once image and text stack (narrow screens), center the "More about Jos"
+   button under the centered heading */
+@media (max-width: 800px) {
+  .about-text > .btn {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+  }
 }
 
 /* =================================================
@@ -696,14 +869,10 @@ section {
   border-radius: 28px 28px 0 0;
 }
 
-.site-footer-note {
-  margin-top: var(--spacing-xs);
-  opacity: 0.75;
-}
-
-.site-footer-note a {
+.site-footer a {
   color: #fff;
-  font-weight: 600;
+  text-decoration: underline;
+  white-space: nowrap;
 }
 
 /* =================================================
@@ -732,6 +901,22 @@ section {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+}
+
+/* Category headings between groups of FAQ items */
+.faq-category {
+  font-size: 1.3rem;
+  margin-top: var(--spacing-lg);
+}
+
+.faq-category:first-child {
+  margin-top: 0;
+}
+
+/* Friendly note for answers that are not written yet */
+.faq-answer .faq-pending {
+  font-style: italic;
+  color: var(--color-text-light);
 }
 
 .faq-item {
@@ -790,6 +975,12 @@ section {
 
 .faq-answer p:last-child {
   margin-bottom: 0;
+}
+
+.faq-answer a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .faq-answer ul {
@@ -1164,50 +1355,110 @@ section {
 }
 
 /* =================================================
-   WHATSAPP "COMING SOON" TOAST
+   INFO PAGES (getting-there.html etc.)
    ================================================= */
-/* Same red accent as .construction-note (icon + border), but on a solid
-   background rather than construction-note's translucent tint - this floats
-   over whatever section the clicked button happens to be in (including the
-   dark hero), and a translucent box loses all contrast there. Positioned
-   above whichever WhatsApp button was clicked (see js/whatsapp-notice.js).
-   Fades in fast, holds for a few seconds, then fades out slowly - timings
-   live in the JS file, not here, since JS drives the class toggling.
-   position: absolute (not fixed) and top/left set in document coordinates
-   (button rect + scroll offset) so the toast scrolls away with the button
-   instead of staying pinned to the viewport and covering other content. */
-.whatsapp-coming-soon-toast {
-  position: absolute;
-  z-index: 1000;
-  display: none;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-  max-width: 280px;
-  padding: var(--spacing-sm) var(--spacing-md);
+/* A readable text column for longer info texts */
+.info-content {
+  max-width: 800px;
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+}
+
+.info-content h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.info-content p {
+  margin-bottom: var(--spacing-md);
+}
+
+.info-content a:not(.btn) {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Side-by-side option boxes (e.g. transport options), stacked on small screens */
+.info-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.info-option {
+  padding: var(--spacing-md);
   background-color: var(--color-bg);
-  border: 1px solid var(--color-danger-soft-border);
+  border: 1px solid var(--color-accent-soft-border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-  color: var(--color-text);
-  font-size: 0.85rem;
-  line-height: 1.4;
-  text-align: left;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  pointer-events: none;
+  box-shadow: var(--shadow-sm);
 }
 
-.whatsapp-coming-soon-toast.is-visible {
-  opacity: 1;
-  transition: opacity 0.2s ease;
+.info-option h3 {
+  margin-bottom: var(--spacing-xs);
 }
 
-.whatsapp-coming-soon-toast-icon {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  margin-top: 0.1rem;
-  color: var(--color-danger-dark);
+.info-option .tour-image {
+  border-radius: calc(var(--radius) - 6px);
+  margin-bottom: var(--spacing-md);
+}
+
+.info-option p:last-child {
+  margin-bottom: 0;
+}
+
+.info-option-meta {
+  font-weight: 600;
+  color: var(--color-accent-dark);
+}
+
+.info-map-link {
+  text-align: center;
+}
+
+/* Info hub grid: two wider cards per row instead of four narrow ones */
+.tour-cards.info-cards {
+  max-width: 900px;
+}
+
+@media (min-width: 700px) {
+  .tour-cards.info-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Info hub cards (info.html): reuse .tour-card, but with a subheading,
+   unclamped preview text and a short topic list */
+.info-card-subheading {
+  font-weight: 600;
+  color: var(--color-accent-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-card-text {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.info-card-topics {
+  list-style: none;
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.info-card-topics li {
+  position: relative;
+  padding: 0.2rem 0 0.2rem 1.25rem;
+}
+
+.info-card-topics li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
 /* =================================================
