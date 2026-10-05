@@ -350,10 +350,13 @@ ideally have the final privacy policy checked by someone with legal knowledge.
 - [ ] Make sure Jos knows that he is the operator of the website and the
       responsible person (controller) for personal data, and agrees to it.
 - [ ] Hand over the Cloudflare account and its email address to Jos (login
-      details, recovery options, two-factor authentication). The data
-      processing agreement with Cloudflare must belong to this account, so
-      that "we have concluded a data processing agreement" in `privacy.html`
-      is true for Jos.
+      details, recovery options, two-factor authentication). For self-serve
+      (free) accounts there is no separate checkbox: Cloudflare's data
+      processing addendum is part of the terms accepted when the account was
+      created, so it applies to this account. Jos should confirm in writing
+      that the account was created on his behalf, so that "we have concluded
+      a data processing agreement" in `privacy.html` is true for him. Keep a
+      PDF copy of the current DPA version.
 - [ ] Storage periods: how long are Cloudflare access logs kept, and how long
       does Jos keep WhatsApp chats, emails and booking data? The privacy
       policy has to state this and currently does not.
