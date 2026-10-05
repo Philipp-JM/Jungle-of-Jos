@@ -25,6 +25,11 @@ tools, and prices, tour details and other facts must never be made up.
 There is no build step. Open an HTML file in a browser to preview changes. The
 site is made from ordinary HTML, CSS, and JavaScript files.
 
+All files of the website are in the `public/` folder, and only this folder is
+published. All file paths below are relative to `public/`. Everything outside
+it (this README, `docs/`, ...) is for the project only and does not appear on
+the website.
+
 ### Change a tour price
 
 1. Update the price in `tours/all-tours.html` first. This is the agreed source
@@ -59,10 +64,11 @@ when the shared element should change on every page.
 
 ### Preview and publish
 
-For a quick check, open `index.html`, `faq.html`, and at least one file in
+For a quick check, open `public/index.html`, `faq.html`, and at least one file in
 `tours/` directly in a browser. Test navigation links, images, FAQ accordion,
 and contact links. The site is published on Cloudflare Pages without a build
-command; the repository owner controls the publishing settings.
+command and with `public` as the build output directory; the repository
+owner controls the publishing settings.
 
 For the background, decisions, and known open issues, see
 [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md).
