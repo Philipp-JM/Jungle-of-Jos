@@ -75,11 +75,17 @@ the number of tours and the amount of detail grew. The current structure is:
   `tours/kuta-cane.html`, and `tours/orangutan-monitoring.html`: individual
   tour detail pages.
 
-Pages are grouped into folders by topic: general pages (`about.html`,
-`faq.html`, `privacy.html`) stay next to `index.html` in the root folder, tour
-pages live in `tours/`, and info pages in `info/`. Do not add a generic
-`src/` folder: it would only make the public URLs longer and suggest a build
-step that does not exist.
+All files of the website live in the `public/` folder; file paths of the
+website in this document are relative to `public/`. Only this folder is
+published (see "Hosting and domain"). Project files that are not part of the
+website (`README.md`, `AGENTS.md`/`CLAUDE.md`, `docs/`, editor settings) stay
+outside it, so they are not reachable on the live site. Never put internal
+notes or documents into `public/`.
+
+Inside `public/`, pages are grouped into folders by topic: general pages
+(`about.html`, `faq.html`, `privacy.html`) stay next to `index.html`, tour
+pages live in `tours/`, and info pages in `info/`. Do not add further generic
+folders such as `src/`: they would only make the public URLs longer.
 
 `js/nav.js` and `js/footer.js` work out the path back to the root folder from
 their own `<script src>` (e.g. `../js/nav.js` means "one folder up"), so a
@@ -124,7 +130,10 @@ jungle green, a warm gold accent, WhatsApp green, and Instagram pink.
 ## Hosting and domain
 
 The site is hosted exclusively on Cloudflare Pages (free, static, no build
-step), currently at `jungle-of-jos.pages.dev`. A data processing agreement
+step), currently at `jungle-of-jos.pages.dev`. Cloudflare Pages settings
+(Settings, Build): framework preset "None", build command empty, build output
+directory `public`. These settings apply to production (`main`) and preview
+branches (e.g. `dev`) alike. A data processing agreement
 with Cloudflare is in place. No tracking, analytics or other third-party
 services are enabled; keep it that way, or update `privacy.html` first.
 

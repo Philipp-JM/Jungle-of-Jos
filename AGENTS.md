@@ -24,7 +24,9 @@ structure, shared scripts, pricing, or implementation status.
 
 ## Non-negotiables (details in PROJECT_CONTEXT.md)
 
-- Plain static HTML, CSS (`css/style.css`), and vanilla JS. No frameworks,
+- The website lives in `public/`; only that folder is published. Keep
+  internal docs and notes outside it.
+- Plain static HTML, CSS (`public/css/style.css`), and vanilla JS. No frameworks,
   package managers, build steps, or new dependencies.
 - Keep it understandable for volunteers with basic IT skills; prefer
   transparent HTML and existing patterns over abstractions.
@@ -41,6 +43,6 @@ structure, shared scripts, pricing, or implementation status.
 ## Working style
 
 - Keep changes small; explain structural or UX trade-offs before making them.
-- When adding a page, also update navigation (`js/nav.js`) and `sitemap.xml`.
+- When adding a page, also update navigation (`public/js/nav.js`) and `public/sitemap.xml`.
 - Check pages by opening them locally (no server or build needed) and verify
   links and mobile layout.
