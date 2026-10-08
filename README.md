@@ -47,12 +47,14 @@ Do not promise a wildlife sighting or invent itinerary times.
 
 ### Add or replace a photo
 
-1. Put the image in `images/` or `images/gallery/`.
-2. Change the relevant `src` in the HTML file.
-3. Describe alt text what is visible, not what it is for.
-4. Check that the image is approved for use and displays well on a phone.
+1. Put the original photo into the `originals/` folder (outside `public/`).
+2. Optimize it with the script `tools/make_image.py`. It creates the small
+	WebP files that the website uses.
+3. Use the new file in the HTML (`src` and a meaningful alt text that describes
+	what is visible), and check that the image is approved for use.
 
-Existing image files are not automatically considered approved final assets.
+Step by step instructions are in the section "Image preparation tool" in
+[`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md).
 
 ### Contact links
 

@@ -129,23 +129,101 @@ jungle green, a warm gold accent, WhatsApp green, and Instagram pink.
 
 ### Image preparation tool
 
-Photos are not put into `public/` as they come from the camera. Originals go
-into `originals/` (outside `public/`, so they are not published). The helper
-script `tools/make_image.py` turns them into small WebP files:
+Photos from a camera or phone are huge (often 3000 to 4000 pixels wide and
+several MB). A visitor's browser would have to download all of that just to show
+a small picture, which makes the site slow. So photos are never put into
+`public/` as they are. Instead:
 
-- `python tools/make_image.py card [name]` writes `public/images/cards/<name>.webp`
-  (max. 800 px wide). Without a name, all originals are processed.
-- `python tools/make_image.py hero <name>` writes `public/images/hero/<name>.webp`
-  (max. 1920 px wide). A name is required.
-- Existing images are skipped; `--force` overwrites them. Smaller originals are
-  never enlarged. Camera rotation is applied, GPS and camera metadata are removed.
-- Accepted inputs: jpg, jpeg, png, webp, and heic/heif.
+- The untouched **original** goes into the folder `originals/`. This folder is
+  outside `public/`, so it is not published.
+- The script `tools/make_image.py` makes a **small copy** for the website and
+  saves it in `public/images/`. Only these small copies are published.
 
-This is the one exception to "no dependencies": the script needs Python with
-`pip install Pillow` (plus `pillow-heif` for HEIC/HEIF). It is a local helper
-for preparing images and is not part of the website, so the site itself stays
-plain HTML, CSS, and JavaScript. It is optional: images can also be resized and
-exported as WebP by hand (e.g. with squoosh.app) at similar sizes.
+The script scales the picture down, saves it as WebP (a modern image format that
+is smaller than JPG at the same quality), rotates it correctly, and removes
+hidden data like the GPS location. It never enlarges a picture and never
+changes the original.
+
+Two kinds of small copies exist:
+
+| Kind | Command word | Saved in | Max. width | Used for |
+|---|---|---|---|---|
+| Card | `card` | `public/images/cards/` | 800 px | tour cards and small pictures |
+| Hero | `hero` | `public/images/hero/` | 1920 px | big banner pictures at the top of a page |
+
+Currently every picture on the site, including the banners on the detail pages
+and the portraits of Jos, uses the card version. Hero versions are not used yet,
+because it is not decided which pictures become heroes.
+
+#### One-time setup (per computer)
+
+1. Install Python 3 from https://www.python.org/downloads/. On Windows, tick
+   "Add Python to PATH" in the installer.
+2. Open a terminal (see step 3 below) and install the two helper libraries:
+   `pip install Pillow pillow-heif`
+   `Pillow` does the image work. `pillow-heif` is only needed for HEIC/HEIF
+   photos (the default photo format of iPhones). Without it everything else
+   still works.
+
+This is the one exception to "no dependencies". It only affects the person
+preparing images. It is not part of the website, and the website itself stays
+plain HTML, CSS and JavaScript. The script is optional: you can also resize and
+export WebP by hand (e.g. with https://squoosh.app) and put the result into the
+folders above.
+
+#### Adding a new photo, step by step
+
+1. **Choose a file name** in lowercase letters, digits and no spaces, e.g.
+   `orang10.jpg`. The name decides the name of the result (`orang10.webp`) and
+   is later used in the HTML. Accepted formats: jpg, jpeg, png, webp, heic, heif.
+2. **Copy the file** into the `originals/` folder of the project.
+3. **Open a terminal in the project folder** (the folder that contains
+   `originals/`, `public/` and `tools/`). Windows: open the folder in File
+   Explorer, click the address bar, type `cmd` and press Enter. Mac: right-click
+   the folder and choose "New Terminal at Folder". In VS Code: Terminal, New
+   Terminal.
+4. **Run the script.** On Windows use the word `python`, on Mac and Linux
+   `python3`:
+   - `python tools/make_image.py card orang10` makes the card version of this
+     one photo (write the name without the ending).
+   - `python tools/make_image.py card` makes card versions of **all** photos in
+     `originals/` that do not have one yet.
+   - `python tools/make_image.py hero orang10` makes the hero version. Here the
+     name is mandatory.
+5. **Read the output.** A line like
+   `ok     orang10: 4032x3024 -> 800x600, 3.1 MB -> 62 KB` means it worked: the
+   picture was shrunk from 4032 to 800 pixels width, and the file from 3.1 MB to
+   62 KB. A line starting with `skip` means this picture already exists and was
+   left alone. A line starting with `error` explains what went wrong.
+6. **Check the result.** The new file `orang10.webp` is now in
+   `public/images/cards/` (or `hero/`). Open it to see that it looks fine.
+7. **Use it in the HTML.** For example, in a tour card:
+   `<img src="images/cards/orang10.webp" alt="..." class="tour-image">`.
+   In files inside a subfolder (`tours/`, `info/`) the path starts with
+   `../`: `../images/cards/orang10.webp`. The alt text describes what is
+   visible, not what it is for.
+8. **Open the page** in a browser and check that the picture shows up, also in
+   a narrow window (phone layout).
+9. **Commit both** the original in `originals/` and the new WebP file.
+
+#### Replacing a photo
+
+Put the new original into `originals/` with the **same name** as before, then
+run the same command with `--force`, for example
+`python tools/make_image.py card orang10 --force`. Without `--force` the script
+keeps the existing image. The HTML does not need to change. If the browser
+still shows the old picture, reload the page without cache (Ctrl+F5).
+
+#### Problems
+
+- `python` is not recognized / command not found: Python is not installed, or
+  not on the PATH. On Mac and Linux try `python3`.
+- `Pillow is missing`: run `pip install Pillow` (or `pip3 install Pillow`).
+- `HEIC/HEIF needs pillow-heif`: run `pip install pillow-heif`.
+- `No original named ...`: the name does not match a file in `originals/`.
+  Check spelling and that the file is in `originals/`, not somewhere else.
+- The picture looks too blurry or too large: the widths and the quality are the
+  values `max_width` and `quality` at the top of `tools/make_image.py`.
 
 ## Hosting and domain
 
@@ -199,7 +277,7 @@ confirms what the activity includes.
 
 ## Content and factual guidance
 
-All `images/jos*.webp` photos show Jos (`jos1` on the home page, `jos4` on
+All `images/cards/jos*.webp` photos show Jos (`jos1` on the home page, `jos4` on
 `about.html`). Jos (real first name: Justra) is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
 He leads treks himself. His team is currently a cook; when needed he brings in
 other local guides as partners, and porters on request. He speaks Indonesian
@@ -246,11 +324,11 @@ Implemented:
 - A working Instagram link in the shared tour CTA: `jungle_of_jos`.
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
-- Image files in `images/` and `images/gallery/`, with some already referenced.
+- Image files in `images/cards/` (made from `originals/` with `tools/make_image.py`), with some already referenced.
 
 Still incomplete or requiring review:
 
-- All photos in `images/` were sent by Jos and are his own, so they may be
+- All photos in `originals/` were sent by Jos and are his own, so they may be
   used on the site. The home page hero image is still an empty placeholder.
   Only add new images whose ownership is equally clear.
 - FAQ answers, itinerary times, several inclusions, and some tour descriptions
@@ -331,7 +409,7 @@ still missing.
 General:
 
 - [ ] Hero image for the home page, and more photos he owns for the info
-      pages. (The existing images in `images/` are confirmed as Jos' own.)
+      pages. (The existing images in `originals/` are confirmed as Jos' own.)
 - [ ] Domain: whether to buy one, and who owns and pays for it long term.
 
 Tours:
