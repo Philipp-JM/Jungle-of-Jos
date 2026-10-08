@@ -127,6 +127,26 @@ Styling is kept in `css/style.css`. Colors, spacing, layout width, and corner
 radius are CSS variables near the top of the file. The visual direction uses
 jungle green, a warm gold accent, WhatsApp green, and Instagram pink.
 
+### Image preparation tool
+
+Photos are not put into `public/` as they come from the camera. Originals go
+into `originals/` (outside `public/`, so they are not published). The helper
+script `tools/make_image.py` turns them into small WebP files:
+
+- `python tools/make_image.py card [name]` writes `public/images/cards/<name>.webp`
+  (max. 800 px wide). Without a name, all originals are processed.
+- `python tools/make_image.py hero <name>` writes `public/images/hero/<name>.webp`
+  (max. 1920 px wide). A name is required.
+- Existing images are skipped; `--force` overwrites them. Smaller originals are
+  never enlarged. Camera rotation is applied, GPS and camera metadata are removed.
+- Accepted inputs: jpg, jpeg, png, webp, and heic/heif.
+
+This is the one exception to "no dependencies": the script needs Python with
+`pip install Pillow` (plus `pillow-heif` for HEIC/HEIF). It is a local helper
+for preparing images and is not part of the website, so the site itself stays
+plain HTML, CSS, and JavaScript. It is optional: images can also be resized and
+exported as WebP by hand (e.g. with squoosh.app) at similar sizes.
+
 ## Hosting and domain
 
 The site is hosted exclusively on Cloudflare Pages (free, static, no build
