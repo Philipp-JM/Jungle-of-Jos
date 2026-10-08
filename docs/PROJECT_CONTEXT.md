@@ -69,7 +69,7 @@ the number of tours and the amount of detail grew. The current structure is:
   emergency numbers, weather, phone and internet, local customs.
 - `info/wildlife.html`: Sumatran orangutans (facts, semi-wild vs. wild) and the
   other confirmed monkey species, with a no-guarantee note.
-- `tours/all-tours.html`: complete tour overview.
+- `tours/index.html`: complete tour overview.
 - `tours/3-hour.html`, `tours/1-day.html`, `tours/2-day.html`, `tours/3-day.html`,
   `tours/4-day.html`, `tours/5-day.html`, `tours/6-day.html`, `tours/7-day.html`,
   `tours/kuta-cane.html`, and `tours/orangutan-monitoring.html`: individual
@@ -103,7 +103,7 @@ Repeated markup is injected into placeholders by normal local scripts:
 - `js/nav.js` inserts the navigation. "Info" has a dropdown submenu listing
   the pages in `info/`: when adding or renaming an info page, also update the
   submenu list in `js/nav.js`. "Tours" has no dropdown on purpose (eleven
-  tours would make it too long); it links to `tours/all-tours.html`.
+  tours would make it too long); it links to `tours/index.html`.
 - `js/footer.js` inserts the footer, the current copyright year and the link
   to the privacy policy.
 - `js/cta.js` inserts the contact CTA on tour pages.
@@ -268,7 +268,7 @@ The home page highlights four offers: the 3-hour trek, 2-day trek, 3-day trek,
 and Kuta Cane expedition. The full overview currently contains ten tour links,
 including 1-day and 4- to 7-day treks plus Orangutan Monitoring.
 
-By agreement, `tours/all-tours.html` is the current source of truth for the
+By agreement, `tours/index.html` is the current source of truth for the
 public overview and prices:
 
 Orangutan Monitoring is listed but its description and format are still marked
@@ -333,7 +333,7 @@ Still incomplete or requiring review:
   Only add new images whose ownership is equally clear.
 - FAQ answers, itinerary times, several inclusions, and some tour descriptions
   still contain `PLACEHOLDER` text and require facts from Jos.
-- Prices need to be synchronized from `tours/all-tours.html` to detail pages.
+- Prices need to be synchronized from `tours/index.html` to detail pages.
 - The domain and the long-term payer/owner remain undecided.
 
 ## Content expansion (TODO)
@@ -384,7 +384,7 @@ To do:
       threats, access only with permit and licensed guide, jungle rules,
       how to recognize a licensed (HPI) guide, and the standard prices set by
       the guide association (the 3-hour to 5-day prices in
-      `tours/all-tours.html` match them). Open points are listed under
+      `tours/index.html` match them). Open points are listed under
       "Open questions for Jos" below.
 - [ ] Add photos to the info pages and info cards (ideally Jos' own photos,
       e.g. from his Instagram, with confirmed permission).
@@ -416,7 +416,7 @@ Tours:
 
 - [ ] Orangutan Monitoring: what the activity includes, its format and a
       short description (see `tours/orangutan-monitoring.html` and the two
-      `PLACEHOLDER` descriptions in `tours/all-tours.html`).
+      `PLACEHOLDER` descriptions in `tours/index.html`).
 - [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
       included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
 - [ ] Itinerary times and tour descriptions that are still generic.

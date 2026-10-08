@@ -23,7 +23,7 @@
           '</button>' +
           '<ul class="nav-links" id="primary-navigation">' +
             '<li><a href="' + rootPrefix + 'about.html">About</a></li>' +
-            '<li><a href="' + rootPrefix + 'tours/all-tours.html">Tours</a></li>' +
+            '<li><a href="' + rootPrefix + 'tours/index.html">Tours</a></li>' +
             '<li class="nav-dropdown">' +
               '<div class="nav-dropdown-row">' +
                 '<a href="' + rootPrefix + 'info/index.html">Info</a>' +
