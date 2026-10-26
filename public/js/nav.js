@@ -23,10 +23,10 @@
           '</button>' +
           '<ul class="nav-links" id="primary-navigation">' +
             '<li><a href="' + rootPrefix + 'about.html">About</a></li>' +
-            '<li><a href="' + rootPrefix + 'tours/all-tours.html">Tours</a></li>' +
+            '<li><a href="' + rootPrefix + 'tours">Tours</a></li>' +
             '<li class="nav-dropdown">' +
               '<div class="nav-dropdown-row">' +
-                '<a href="' + rootPrefix + 'info/index.html">Info</a>' +
+                '<a href="' + rootPrefix + 'info">Info</a>' +
                 '<button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="info-submenu" aria-label="Show Info pages">' +
                   '<span class="nav-dropdown-arrow" aria-hidden="true"></span>' +
                 '</button>' +
