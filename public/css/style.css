@@ -722,6 +722,7 @@ section {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  object-position: var(--x, 50%) var(--y, 50%); /* default: centered */
   background-color: var(--color-border);
   background-image: var(--image-missing);
   flex-shrink: 0;
