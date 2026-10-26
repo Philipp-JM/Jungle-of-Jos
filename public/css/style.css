@@ -723,12 +723,17 @@ section {
   aspect-ratio: 3 / 2;
   object-fit: cover;
   object-position: var(--x, 50%) var(--y, 50%); /* default: centered */
+  /* Zoom grows around the focus point; .tour-card clips the overflow. */
+  transform: scale(var(--zoom, 1));
+  transform-origin: var(--x, 50%) var(--y, 50%);
   background-color: var(--color-border);
   background-image: var(--image-missing);
   flex-shrink: 0;
 }
 
 .tour-card-body {
+  position: relative; /* paints above a zoomed .tour-image */
+  background-color: var(--color-bg);
   padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
