@@ -103,7 +103,9 @@ Repeated markup is injected into placeholders by normal local scripts:
 - `js/nav.js` inserts the navigation. "Info" has a dropdown submenu listing
   the pages in `info/`: when adding or renaming an info page, also update the
   submenu list in `js/nav.js`. "Tours" has no dropdown on purpose (eleven
-  tours would make it too long); it links to `tours/index.html`.
+  tours would make it too long); it links to `tours/index.html`. The nav links
+  name `index.html` explicitly so they also work via `file://`; on Cloudflare
+  Pages the address bar still shows the short URL (`/tours/`, `/info/`).
 - `js/footer.js` inserts the footer, the current copyright year and the link
   to the privacy policy.
 - `js/cta.js` inserts the contact CTA on tour pages.
@@ -232,8 +234,20 @@ step), currently at `jungle-of-jos.pages.dev`. Cloudflare Pages settings
 (Settings, Build): framework preset "None", build command empty, build output
 directory `public`. These settings apply to production (`main`) and preview
 branches (e.g. `dev`) alike. A data processing agreement
-with Cloudflare is in place. No tracking, analytics or other third-party
-services are enabled; keep it that way, or update `privacy.html` first.
+with Cloudflare is in place.
+
+Cloudflare Web Analytics is used for visitor statistics (decided by the
+project owner). It is cookieless: no cookies, no local storage, no tracking
+pixel, no fingerprinting, unlike Google Analytics or Matomo. It is enabled in
+the Cloudflare dashboard (Workers & Pages, the project, Metrics, Web
+Analytics), which makes Cloudflare inject its small beacon script into the
+pages automatically on the next deployment; there is no script tag in the
+HTML. `privacy.html` section 3 describes it. No other tracking, advertising or
+third-party services are used; keep it that way, or update `privacy.html`
+first.
+
+There is no online booking and no online payment. Tours are paid in cash on
+site, so no bank or card data is processed.
 
 The Cloudflare account was set up by a volunteer on Jos' behalf, using an
 email address created for Jos, and is to be handed over to Jos. Jos is the
@@ -241,9 +255,10 @@ operator of the website and the controller under data protection law. The
 volunteer who owns the GitHub repository only maintains the code and is not
 the operator. See "Legal and privacy" under "Open questions for Jos".
 
-The domain decision is still open. Launching on the free `pages.dev`
-subdomain is acceptable. If a custom domain is purchased, long-term ownership
-and payment responsibility must be agreed with Jos first.
+The site launches on the free `pages.dev` subdomain. A custom domain is
+planned: Jos will buy it himself and owns and pays for it long term; the
+project owner tells him where to buy it. Until then everything stays on
+`jungle-of-jos.pages.dev`.
 
 The full domain only appears in three places (everything else uses relative
 paths): `robots.txt` (sitemap line), `sitemap.xml`, and the
@@ -275,9 +290,11 @@ public overview and prices. The detail pages of the 1- to 7-day treks show the
 same prices. The 3-hour, Kuta Cane and Orangutan Monitoring detail pages are
 still "under construction" notes without price or itinerary.
 
-Orangutan Monitoring is listed but its description and format are still marked
-as unconfirmed. It must not be treated as final public content until Jos
-confirms what the activity includes.
+Orangutan Monitoring is listed twice on purpose (regular tours and "Special
+Tours"). Its card descriptions and page subtitle are a generic sentence about
+looking for and observing orangutans; the detail page is still an "under
+construction" note. Do not add inclusions or a format until Jos confirms what
+the activity includes.
 
 ## Content and factual guidance
 
@@ -340,21 +357,14 @@ Still incomplete or requiring review:
 
 - All photos in `originals/` were sent by Jos and are his own, so they may be
   used on the site. Only add new images whose ownership is equally clear.
-- Several inclusions, some tour descriptions and the Orangutan Monitoring texts
-  still contain `PLACEHOLDER` text and require facts from Jos. Two FAQ answers
-  (group size, children) are "under construction" notes.
+- Several inclusions and some tour descriptions still contain `PLACEHOLDER`
+  text and require facts from Jos (left in place on purpose until the project
+  owner reviews them). Two FAQ answers (group size, children) are "under
+  construction" notes.
 - The 3-hour, Kuta Cane and Orangutan Monitoring detail pages are only
   "under construction" notes, although the 3-hour and Kuta Cane tours are
-  featured on the home page.
-- `sitemap.xml` and the canonical tag of `tours/index.html` still point to
-  `/tours/all-tours`, which no longer exists after the rename; both should be
-  `https://jungle-of-jos.pages.dev/tours/`. The CSS comments in
-  `css/style.css` also still mention `all-tours.html`.
-- The "Tours" and "Info" links in `js/nav.js` point to the folders (`tours`,
-  `info`) instead of `tours/index.html` and `info/index.html`. This works on
-  Cloudflare Pages, but not when a page is opened via `file://` (the browser
-  shows the folder listing instead of the page).
-- The domain and the long-term payer/owner remain undecided.
+  featured on the home page. This is accepted for launch.
+- Custom domain not bought yet (see "Hosting and domain").
 
 ## Content expansion (TODO)
 
@@ -433,14 +443,16 @@ General:
 - [x] Hero image for the home page (`images/hero/hero2.webp`).
 - [ ] More photos he owns for the remaining info pages. (The existing images
       in `originals/` are confirmed as Jos' own.)
-- [ ] Domain: whether to buy one, and who owns and pays for it long term.
+- [x] Domain: Jos buys it and owns and pays for it; the project owner tells
+      him where. Launch is on `pages.dev`.
+- [ ] Domain bought: then replace `https://jungle-of-jos.pages.dev` in all
+      files and add the domain in Cloudflare Pages.
 
 Tours:
 
-- [ ] Orangutan Monitoring: what the activity includes, its format and a
-      short description (see `tours/orangutan-monitoring.html` and the two
-      `PLACEHOLDER` descriptions in `tours/index.html`). Should it be listed
-      twice on the overview?
+- [ ] Orangutan Monitoring: what the activity includes and its format. The
+      descriptions are generic for now and the detail page is "under
+      construction". (Listing it twice on the overview is intended.)
 - [ ] 3-hour trek and Kuta Cane expedition: itinerary, inclusions and price
       for the detail pages (currently "under construction").
 - [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
@@ -500,8 +512,8 @@ Legal and privacy (`privacy.html`, hosting):
 These points should be settled before launch. They are not legal advice;
 ideally have the final privacy policy checked by someone with legal knowledge.
 
-- [ ] Make sure Jos knows that he is the operator of the website and the
-      responsible person (controller) for personal data, and agrees to it.
+- [x] Jos knows that he is the operator of the website and the responsible
+      person (controller) for personal data, and agreed (via WhatsApp).
 - [ ] Hand over the Cloudflare account and its email address to Jos (login
       details, recovery options, two-factor authentication). For self-serve
       (free) accounts there is no separate checkbox: Cloudflare's data
@@ -510,25 +522,33 @@ ideally have the final privacy policy checked by someone with legal knowledge.
       that the account was created on his behalf, so that "we have concluded
       a data processing agreement" in `privacy.html` is true for him. Keep a
       PDF copy of the current DPA version.
-- [ ] Storage periods: how long are Cloudflare access logs kept, and how long
-      does Jos keep WhatsApp chats, emails and booking data? The privacy
-      policy has to state this and currently does not.
-- [ ] Add contact by email to section 4 of `privacy.html`: the address is a
-      Gmail address, so messages are processed by Google (USA).
-- [ ] Applicable law: the policy only refers to the GDPR. Jos is in
-      Indonesia, where the Personal Data Protection Law (UU PDP, No. 27/2022)
-      applies. Decide whether to mention it.
-- [ ] GDPR representative in the EU (Art. 27): needed in principle because the
-      site targets EU travellers; the exception for occasional, low-risk
-      processing probably applies. Decide this consciously.
-- [ ] Mention that booking data goes to Jos in Indonesia (no EU adequacy
-      decision).
-- [ ] State the right to object (Art. 21 GDPR) separately and clearly, since
-      section 2 relies on legitimate interest (Art. 6(1)(f)).
-- [ ] Check in the Cloudflare dashboard that Web Analytics, Bot Fight Mode and
-      similar features are off, so that "no cookies, no tracking" stays true.
-- [ ] Imprint: probably not needed for an operator in Indonesia; confirm once
-      the operator question above is settled.
+- [x] Storage periods: `privacy.html` says that Cloudflare keeps server logs
+      only briefly under its own deletion periods (Jos has no access to them)
+      and that Jos keeps messages only as long as needed for the request and
+      the tour, and deletes them on request. Jos should know he committed to
+      this.
+- [x] Email: the Gmail address is only shown as contact address of the
+      controller; there is no Gmail integration, no contact form and no
+      online booking, so no separate section was added (owner's decision).
+- [x] Applicable law: the policy follows the GDPR. The Indonesian Personal
+      Data Protection Law (UU PDP, No. 27/2022) is considered covered by the
+      same practice (minimal data, no tracking, cash payment) and is not
+      mentioned separately (owner's decision). Revisit if the site starts to
+      collect more data.
+- [x] GDPR representative in the EU (Art. 27): none appointed. The site is
+      fully owned by Jos in Indonesia and processing is occasional and low
+      risk (Art. 27(2)(a) exception).
+- [x] `privacy.html` mentions that messages are processed by Jos in
+      Indonesia (no EU adequacy decision, Art. 49(1)(b) GDPR) and that there
+      is no online booking or payment (cash only).
+- [x] Right to object (Art. 21 GDPR) is a separate section 7 of
+      `privacy.html`.
+- [ ] Cloudflare dashboard: turn Web Analytics on for the Pages project (it
+      is described in `privacy.html` section 3), and check that Bot Fight
+      Mode and similar features are off (they can set cookies).
+- [ ] Imprint: probably not needed for an operator in Indonesia (an imprint
+      is mainly a German/Austrian legal notice duty for providers there);
+      confirm this.
 
 About (`about.html`):
 

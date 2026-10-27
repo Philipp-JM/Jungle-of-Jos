@@ -665,7 +665,7 @@ section {
 }
 
 /* .is-tinted marks which .tours sections get the beige wash - a page can
-   have several .tours sections back to back (see all-tours.html) and they
+   have several .tours sections back to back (see tours/index.html) and they
    should alternate white/tinted/white, not all render the same color. */
 .tours.is-tinted,
 .whats-included,
@@ -1286,7 +1286,7 @@ section {
 }
 
 /* =================================================
-   GROUP SIZE NOTE (all-tours page)
+   GROUP SIZE NOTE (tour overview page)
    ================================================= */
 /* A quiet, self-contained info box - kept small and muted on purpose so it
    reads as a helpful aside rather than competing with the tour cards above
