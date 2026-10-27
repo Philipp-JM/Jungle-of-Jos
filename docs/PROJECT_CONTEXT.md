@@ -47,7 +47,7 @@ knowledge that future volunteers should not need.
 The original one-page concept was replaced by a static multi-page website as
 the number of tours and the amount of detail grew. The current structure is:
 
-- `index.html`: home page with hero, About, featured tours, gallery, and contact.
+- `index.html`: home page with hero, About teaser, featured tours, and contact.
 - `about.html`: about Jos, his HPI license, his team and how he guides. The
   home page only shows a short About teaser that links here, and the "About"
   navigation item points to this page.
@@ -103,7 +103,9 @@ Repeated markup is injected into placeholders by normal local scripts:
 - `js/nav.js` inserts the navigation. "Info" has a dropdown submenu listing
   the pages in `info/`: when adding or renaming an info page, also update the
   submenu list in `js/nav.js`. "Tours" has no dropdown on purpose (eleven
-  tours would make it too long); it links to `tours/index.html`.
+  tours would make it too long); it links to `tours/index.html`. The nav links
+  name `index.html` explicitly so they also work via `file://`; on Cloudflare
+  Pages the address bar still shows the short URL (`/tours/`, `/info/`).
 - `js/footer.js` inserts the footer, the current copyright year and the link
   to the privacy policy.
 - `js/cta.js` inserts the contact CTA on tour pages.
@@ -152,8 +154,8 @@ Two kinds of small copies exist:
 | Hero | `hero` | `public/images/hero/` | 1920 px | big banner pictures at the top of a page |
 
 Currently every picture on the site, including the banners on the detail pages
-and the portraits of Jos, uses the card version. Hero versions are not used yet,
-because it is not decided which pictures become heroes.
+and the portraits of Jos, uses the card version. The only hero version so far is
+the home page banner (`images/hero/hero2.webp`).
 
 #### One-time setup (per computer)
 
@@ -232,8 +234,20 @@ step), currently at `jungle-of-jos.pages.dev`. Cloudflare Pages settings
 (Settings, Build): framework preset "None", build command empty, build output
 directory `public`. These settings apply to production (`main`) and preview
 branches (e.g. `dev`) alike. A data processing agreement
-with Cloudflare is in place. No tracking, analytics or other third-party
-services are enabled; keep it that way, or update `privacy.html` first.
+with Cloudflare is in place.
+
+Cloudflare Web Analytics is used for visitor statistics (decided by the
+project owner). It is cookieless: no cookies, no local storage, no tracking
+pixel, no fingerprinting, unlike Google Analytics or Matomo. It is enabled in
+the Cloudflare dashboard (Workers & Pages, the project, Metrics, Web
+Analytics), which makes Cloudflare inject its small beacon script into the
+pages automatically on the next deployment; there is no script tag in the
+HTML. `privacy.html` section 3 describes it. No other tracking, advertising or
+third-party services are used; keep it that way, or update `privacy.html`
+first.
+
+There is no online booking and no online payment. Tours are paid in cash on
+site, so no bank or card data is processed.
 
 The Cloudflare account was set up by a volunteer on Jos' behalf, using an
 email address created for Jos, and is to be handed over to Jos. Jos is the
@@ -241,9 +255,10 @@ operator of the website and the controller under data protection law. The
 volunteer who owns the GitHub repository only maintains the code and is not
 the operator. See "Legal and privacy" under "Open questions for Jos".
 
-The domain decision is still open. Launching on the free `pages.dev`
-subdomain is acceptable. If a custom domain is purchased, long-term ownership
-and payment responsibility must be agreed with Jos first.
+The site launches on the free `pages.dev` subdomain. A custom domain is
+planned: Jos will buy it himself and owns and pays for it long term; the
+project owner tells him where to buy it. Until then everything stays on
+`jungle-of-jos.pages.dev`.
 
 The full domain only appears in three places (everything else uses relative
 paths): `robots.txt` (sitemap line), `sitemap.xml`, and the
@@ -264,16 +279,22 @@ the home page for unknown URLs.
 
 ## Tours and pricing
 
-The home page highlights four offers: the 3-hour trek, 2-day trek, 3-day trek,
-and Kuta Cane expedition. The full overview currently contains ten tour links,
-including 1-day and 4- to 7-day treks plus Orangutan Monitoring.
+The home page highlights six offers: the 3-hour, 1-day, 2-day and 3-day treks,
+the 7-day expedition and the Kuta Cane expedition. The full overview
+(`tours/index.html`) contains the 3-hour, 1-day and 2- to 7-day treks, the Kuta
+Cane expedition and Orangutan Monitoring (listed twice: under the regular tours
+and under "Special Tours").
 
 By agreement, `tours/index.html` is the current source of truth for the
-public overview and prices:
+public overview and prices. The detail pages of the 1- to 7-day treks show the
+same prices. The 3-hour, Kuta Cane and Orangutan Monitoring detail pages are
+still "under construction" notes without price or itinerary.
 
-Orangutan Monitoring is listed but its description and format are still marked
-as unconfirmed. It must not be treated as final public content until Jos
-confirms what the activity includes.
+Orangutan Monitoring is listed twice on purpose (regular tours and "Special
+Tours"). Its card descriptions and page subtitle are a generic sentence about
+looking for and observing orangutans; the detail page is still an "under
+construction" note. Do not add inclusions or a format until Jos confirms what
+the activity includes.
 
 ## Content and factual guidance
 
@@ -324,17 +345,26 @@ Implemented:
 - A working Instagram link in the shared tour CTA: `jungle_of_jos`.
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
-- Image files in `images/cards/` (made from `originals/` with `tools/make_image.py`), with some already referenced.
+- Image files in `images/cards/` and `images/hero/` (made from `originals/`
+  with `tools/make_image.py`).
+- Home page hero image (`images/hero/hero2.webp`).
+- Photos on the tour cards, tour detail pages, the About page and some info
+  pages (`info/getting-there.html`, `info/national-park.html`,
+  `info/wildlife.html`).
+- Prices on the 1- to 7-day detail pages match `tours/index.html`.
 
 Still incomplete or requiring review:
 
 - All photos in `originals/` were sent by Jos and are his own, so they may be
-  used on the site. The home page hero image is still an empty placeholder.
-  Only add new images whose ownership is equally clear.
-- FAQ answers, itinerary times, several inclusions, and some tour descriptions
-  still contain `PLACEHOLDER` text and require facts from Jos.
-- Prices need to be synchronized from `tours/index.html` to detail pages.
-- The domain and the long-term payer/owner remain undecided.
+  used on the site. Only add new images whose ownership is equally clear.
+- Several inclusions and some tour descriptions still contain `PLACEHOLDER`
+  text and require facts from Jos (left in place on purpose until the project
+  owner reviews them). Two FAQ answers (group size, children) are "under
+  construction" notes.
+- The 3-hour, Kuta Cane and Orangutan Monitoring detail pages are only
+  "under construction" notes, although the 3-hour and Kuta Cane tours are
+  featured on the home page. This is accepted for launch.
+- Custom domain not bought yet (see "Hosting and domain").
 
 ## Content expansion (TODO)
 
@@ -386,8 +416,10 @@ To do:
       the guide association (the 3-hour to 5-day prices in
       `tours/index.html` match them). Open points are listed under
       "Open questions for Jos" below.
-- [ ] Add photos to the info pages and info cards (ideally Jos' own photos,
-      e.g. from his Instagram, with confirmed permission).
+- [ ] Add photos to the remaining info pages and the info cards. Done:
+      `info/getting-there.html`, `info/national-park.html`,
+      `info/wildlife.html`. Still without photos: `info/index.html` (cards),
+      `info/packing-list.html`, `info/travel-tips.html`.
 - [ ] Have Jos (or the project owner) review general background texts before
       publishing, starting with `info/getting-there.html`.
 - [x] Extended `faq.html` to 20 questions in three categories. Group size
@@ -408,18 +440,25 @@ still missing.
 
 General:
 
-- [ ] Hero image for the home page, and more photos he owns for the info
-      pages. (The existing images in `originals/` are confirmed as Jos' own.)
-- [ ] Domain: whether to buy one, and who owns and pays for it long term.
+- [x] Hero image for the home page (`images/hero/hero2.webp`).
+- [ ] More photos he owns for the remaining info pages. (The existing images
+      in `originals/` are confirmed as Jos' own.)
+- [x] Domain: Jos buys it and owns and pays for it; the project owner tells
+      him where. Launch is on `pages.dev`.
+- [ ] Domain bought: then replace `https://jungle-of-jos.pages.dev` in all
+      files and add the domain in Cloudflare Pages.
 
 Tours:
 
-- [ ] Orangutan Monitoring: what the activity includes, its format and a
-      short description (see `tours/orangutan-monitoring.html` and the two
-      `PLACEHOLDER` descriptions in `tours/index.html`).
+- [ ] Orangutan Monitoring: what the activity includes and its format. The
+      descriptions are generic for now and the detail page is "under
+      construction". (Listing it twice on the overview is intended.)
+- [ ] 3-hour trek and Kuta Cane expedition: itinerary, inclusions and price
+      for the detail pages (currently "under construction").
 - [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
       included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
-- [ ] Itinerary times and tour descriptions that are still generic.
+- [ ] Itinerary times and tour descriptions that are still generic (e.g. the
+      `PLACEHOLDER` closing sentences on the 4-, 5- and 6-day pages).
 
 Getting there (`info/getting-there.html`):
 
@@ -473,8 +512,8 @@ Legal and privacy (`privacy.html`, hosting):
 These points should be settled before launch. They are not legal advice;
 ideally have the final privacy policy checked by someone with legal knowledge.
 
-- [ ] Make sure Jos knows that he is the operator of the website and the
-      responsible person (controller) for personal data, and agrees to it.
+- [x] Jos knows that he is the operator of the website and the responsible
+      person (controller) for personal data, and agreed (via WhatsApp).
 - [ ] Hand over the Cloudflare account and its email address to Jos (login
       details, recovery options, two-factor authentication). For self-serve
       (free) accounts there is no separate checkbox: Cloudflare's data
@@ -483,25 +522,33 @@ ideally have the final privacy policy checked by someone with legal knowledge.
       that the account was created on his behalf, so that "we have concluded
       a data processing agreement" in `privacy.html` is true for him. Keep a
       PDF copy of the current DPA version.
-- [ ] Storage periods: how long are Cloudflare access logs kept, and how long
-      does Jos keep WhatsApp chats, emails and booking data? The privacy
-      policy has to state this and currently does not.
-- [ ] Add contact by email to section 4 of `privacy.html`: the address is a
-      Gmail address, so messages are processed by Google (USA).
-- [ ] Applicable law: the policy only refers to the GDPR. Jos is in
-      Indonesia, where the Personal Data Protection Law (UU PDP, No. 27/2022)
-      applies. Decide whether to mention it.
-- [ ] GDPR representative in the EU (Art. 27): needed in principle because the
-      site targets EU travellers; the exception for occasional, low-risk
-      processing probably applies. Decide this consciously.
-- [ ] Mention that booking data goes to Jos in Indonesia (no EU adequacy
-      decision).
-- [ ] State the right to object (Art. 21 GDPR) separately and clearly, since
-      section 2 relies on legitimate interest (Art. 6(1)(f)).
-- [ ] Check in the Cloudflare dashboard that Web Analytics, Bot Fight Mode and
-      similar features are off, so that "no cookies, no tracking" stays true.
-- [ ] Imprint: probably not needed for an operator in Indonesia; confirm once
-      the operator question above is settled.
+- [x] Storage periods: `privacy.html` says that Cloudflare keeps server logs
+      only briefly under its own deletion periods (Jos has no access to them)
+      and that Jos keeps messages only as long as needed for the request and
+      the tour, and deletes them on request. Jos should know he committed to
+      this.
+- [x] Email: the Gmail address is only shown as contact address of the
+      controller; there is no Gmail integration, no contact form and no
+      online booking, so no separate section was added (owner's decision).
+- [x] Applicable law: the policy follows the GDPR. The Indonesian Personal
+      Data Protection Law (UU PDP, No. 27/2022) is considered covered by the
+      same practice (minimal data, no tracking, cash payment) and is not
+      mentioned separately (owner's decision). Revisit if the site starts to
+      collect more data.
+- [x] GDPR representative in the EU (Art. 27): none appointed. The site is
+      fully owned by Jos in Indonesia and processing is occasional and low
+      risk (Art. 27(2)(a) exception).
+- [x] `privacy.html` mentions that messages are processed by Jos in
+      Indonesia (no EU adequacy decision, Art. 49(1)(b) GDPR) and that there
+      is no online booking or payment (cash only).
+- [x] Right to object (Art. 21 GDPR) is a separate section 7 of
+      `privacy.html`.
+- [ ] Cloudflare dashboard: turn Web Analytics on for the Pages project (it
+      is described in `privacy.html` section 3), and check that Bot Fight
+      Mode and similar features are off (they can set cookies).
+- [ ] Imprint: probably not needed for an operator in Indonesia (an imprint
+      is mainly a German/Austrian legal notice duty for providers there);
+      confirm this.
 
 About (`about.html`):
 
