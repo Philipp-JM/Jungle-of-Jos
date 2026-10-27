@@ -47,7 +47,7 @@ knowledge that future volunteers should not need.
 The original one-page concept was replaced by a static multi-page website as
 the number of tours and the amount of detail grew. The current structure is:
 
-- `index.html`: home page with hero, About, featured tours, gallery, and contact.
+- `index.html`: home page with hero, About teaser, featured tours, and contact.
 - `about.html`: about Jos, his HPI license, his team and how he guides. The
   home page only shows a short About teaser that links here, and the "About"
   navigation item points to this page.
@@ -152,8 +152,8 @@ Two kinds of small copies exist:
 | Hero | `hero` | `public/images/hero/` | 1920 px | big banner pictures at the top of a page |
 
 Currently every picture on the site, including the banners on the detail pages
-and the portraits of Jos, uses the card version. Hero versions are not used yet,
-because it is not decided which pictures become heroes.
+and the portraits of Jos, uses the card version. The only hero version so far is
+the home page banner (`images/hero/hero2.webp`).
 
 #### One-time setup (per computer)
 
@@ -264,12 +264,16 @@ the home page for unknown URLs.
 
 ## Tours and pricing
 
-The home page highlights four offers: the 3-hour trek, 2-day trek, 3-day trek,
-and Kuta Cane expedition. The full overview currently contains ten tour links,
-including 1-day and 4- to 7-day treks plus Orangutan Monitoring.
+The home page highlights six offers: the 3-hour, 1-day, 2-day and 3-day treks,
+the 7-day expedition and the Kuta Cane expedition. The full overview
+(`tours/index.html`) contains the 3-hour, 1-day and 2- to 7-day treks, the Kuta
+Cane expedition and Orangutan Monitoring (listed twice: under the regular tours
+and under "Special Tours").
 
 By agreement, `tours/index.html` is the current source of truth for the
-public overview and prices:
+public overview and prices. The detail pages of the 1- to 7-day treks show the
+same prices. The 3-hour, Kuta Cane and Orangutan Monitoring detail pages are
+still "under construction" notes without price or itinerary.
 
 Orangutan Monitoring is listed but its description and format are still marked
 as unconfirmed. It must not be treated as final public content until Jos
@@ -324,16 +328,32 @@ Implemented:
 - A working Instagram link in the shared tour CTA: `jungle_of_jos`.
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
-- Image files in `images/cards/` (made from `originals/` with `tools/make_image.py`), with some already referenced.
+- Image files in `images/cards/` and `images/hero/` (made from `originals/`
+  with `tools/make_image.py`).
+- Home page hero image (`images/hero/hero2.webp`).
+- Photos on the tour cards, tour detail pages, the About page and some info
+  pages (`info/getting-there.html`, `info/national-park.html`,
+  `info/wildlife.html`).
+- Prices on the 1- to 7-day detail pages match `tours/index.html`.
 
 Still incomplete or requiring review:
 
 - All photos in `originals/` were sent by Jos and are his own, so they may be
-  used on the site. The home page hero image is still an empty placeholder.
-  Only add new images whose ownership is equally clear.
-- FAQ answers, itinerary times, several inclusions, and some tour descriptions
-  still contain `PLACEHOLDER` text and require facts from Jos.
-- Prices need to be synchronized from `tours/index.html` to detail pages.
+  used on the site. Only add new images whose ownership is equally clear.
+- Several inclusions, some tour descriptions and the Orangutan Monitoring texts
+  still contain `PLACEHOLDER` text and require facts from Jos. Two FAQ answers
+  (group size, children) are "under construction" notes.
+- The 3-hour, Kuta Cane and Orangutan Monitoring detail pages are only
+  "under construction" notes, although the 3-hour and Kuta Cane tours are
+  featured on the home page.
+- `sitemap.xml` and the canonical tag of `tours/index.html` still point to
+  `/tours/all-tours`, which no longer exists after the rename; both should be
+  `https://jungle-of-jos.pages.dev/tours/`. The CSS comments in
+  `css/style.css` also still mention `all-tours.html`.
+- The "Tours" and "Info" links in `js/nav.js` point to the folders (`tours`,
+  `info`) instead of `tours/index.html` and `info/index.html`. This works on
+  Cloudflare Pages, but not when a page is opened via `file://` (the browser
+  shows the folder listing instead of the page).
 - The domain and the long-term payer/owner remain undecided.
 
 ## Content expansion (TODO)
@@ -386,8 +406,10 @@ To do:
       the guide association (the 3-hour to 5-day prices in
       `tours/index.html` match them). Open points are listed under
       "Open questions for Jos" below.
-- [ ] Add photos to the info pages and info cards (ideally Jos' own photos,
-      e.g. from his Instagram, with confirmed permission).
+- [ ] Add photos to the remaining info pages and the info cards. Done:
+      `info/getting-there.html`, `info/national-park.html`,
+      `info/wildlife.html`. Still without photos: `info/index.html` (cards),
+      `info/packing-list.html`, `info/travel-tips.html`.
 - [ ] Have Jos (or the project owner) review general background texts before
       publishing, starting with `info/getting-there.html`.
 - [x] Extended `faq.html` to 20 questions in three categories. Group size
@@ -408,18 +430,23 @@ still missing.
 
 General:
 
-- [ ] Hero image for the home page, and more photos he owns for the info
-      pages. (The existing images in `originals/` are confirmed as Jos' own.)
+- [x] Hero image for the home page (`images/hero/hero2.webp`).
+- [ ] More photos he owns for the remaining info pages. (The existing images
+      in `originals/` are confirmed as Jos' own.)
 - [ ] Domain: whether to buy one, and who owns and pays for it long term.
 
 Tours:
 
 - [ ] Orangutan Monitoring: what the activity includes, its format and a
       short description (see `tours/orangutan-monitoring.html` and the two
-      `PLACEHOLDER` descriptions in `tours/index.html`).
+      `PLACEHOLDER` descriptions in `tours/index.html`). Should it be listed
+      twice on the overview?
+- [ ] 3-hour trek and Kuta Cane expedition: itinerary, inclusions and price
+      for the detail pages (currently "under construction").
 - [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
       included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
-- [ ] Itinerary times and tour descriptions that are still generic.
+- [ ] Itinerary times and tour descriptions that are still generic (e.g. the
+      `PLACEHOLDER` closing sentences on the 4-, 5- and 6-day pages).
 
 Getting there (`info/getting-there.html`):
 
