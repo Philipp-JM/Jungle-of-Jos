@@ -904,8 +904,12 @@ section {
 
 .site-footer a {
   color: #fff;
-  text-decoration: underline;
+  text-decoration: none;
   white-space: nowrap;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
 }
 
 /* Copyright, privacy link and phone: side by side with a thin divider on
