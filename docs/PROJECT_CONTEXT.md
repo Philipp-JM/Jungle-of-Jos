@@ -466,8 +466,6 @@ Getting there (`info/getting-there.html`):
 
 - [ ] Is the transfer from the Bukit Lawang bus station to the hotel free or
       paid? (Jos confirmed he can organize it.)
-- [ ] Are the travel times on the page realistic (airport/Medan to Bukit
-      Lawang, Bukit Lawang to Berastagi and Lake Toba)?
 
 National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
