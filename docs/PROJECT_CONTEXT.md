@@ -441,7 +441,7 @@ still missing.
 General:
 
 - [x] Hero image for the home page (`images/hero/hero2.webp`).
-- [ ] More photos he owns for the remaining info pages. (The existing images
+- [x] More photos he owns for the remaining info pages. (The existing images
       in `originals/` are confirmed as Jos' own.)
 - [x] Domain: Jos buys it and owns and pays for it; the project owner tells
       him where. Launch is on `pages.dev`.
@@ -457,8 +457,10 @@ Tours:
       for the detail pages (currently "under construction").
 - [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
       included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
-- [ ] Itinerary times and tour descriptions that are still generic (e.g. the
-      `PLACEHOLDER` closing sentences on the 4-, 5- and 6-day pages).
+- [ ] Itinerary times and tour descriptions that are still generic. The 4- to
+      7-day descriptions now set each length apart (4 days: you see what the
+      jungle offers; 5 and 6 days: more time in nature and with the group;
+      7 days: the adventure). Jos should confirm this.
 
 Getting there (`info/getting-there.html`):
 
