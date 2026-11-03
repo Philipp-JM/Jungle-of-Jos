@@ -866,6 +866,15 @@ section {
   margin-bottom: var(--spacing-lg);
 }
 
+.contact-phone {
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.contact-phone a {
+  white-space: nowrap;
+}
+
 .contact-location {
   color: var(--color-text-light);
 }

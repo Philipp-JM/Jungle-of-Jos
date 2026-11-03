@@ -9,6 +9,7 @@
     footer.innerHTML =
       '<p>&copy; <span id="current-year">' + new Date().getFullYear() +
       '</span> Jungle of Jos. All rights reserved. &middot; ' +
+      '<a href="tel:+6282277752204">Phone / WhatsApp: +62 822-7775-2204</a> &middot; ' +
       '<a href="' + rootPrefix + 'privacy.html">Privacy Policy</a></p>';
     mount.replaceWith(footer);
   });
