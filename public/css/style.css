@@ -723,7 +723,6 @@ section {
   aspect-ratio: 3 / 2;
   object-fit: cover;
   object-position: var(--x, 50%) var(--y, 50%); /* default: centered */
-  /* Zoom grows around the focus point; .tour-card clips the overflow. */
   transform: scale(var(--zoom, 1));
   transform-origin: var(--x, 50%) var(--y, 50%);
   background-color: var(--color-border);
@@ -1050,6 +1049,7 @@ section {
   width: 100%;
   height: 320px;
   object-fit: cover;
+  object-position: var(--x, 50%) var(--y, 50%); /* default: centered */
   border-radius: var(--radius);
   background-color: var(--color-bg-alt);
   background-image: var(--image-missing);
