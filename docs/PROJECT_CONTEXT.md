@@ -464,8 +464,19 @@ Tours:
 
 Getting there (`info/getting-there.html`):
 
-- [ ] Is the transfer from the Bukit Lawang bus station to the hotel free or
-      paid? (Jos confirmed he can organize it.)
+- [x] Which transport option does Jos recommend to his guests? (Train or bus
+      from Kualanamu Airport to Medan, then a tourist bus from Medan to Bukit
+      Lawang.)
+- [x] Does he offer a transfer from the Bukit Lawang bus station? (Yes, he
+      can organize a transfer from the bus station to the hotel.)
+- [ ] Is the transfer from the bus station free or paid?
+- [x] Is there still a direct bus from Kualanamu Airport to Bukit Lawang?
+      (No, guests have to go via Medan.)
+- [x] Are the travel times on the page realistic? (Updated: airport to Medan
+      about 1 hour, public bus Medan to Bukit Lawang 4 to 5 hours, Bukit
+      Lawang to Berastagi 3 to 4 hours; the rest is correct.)
+- [x] Should guests arrive the day before their trek? (Yes, treks start at
+      9:00 AM, so guests should arrive the day before.)
 
 National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
