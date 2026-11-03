@@ -347,9 +347,11 @@ Implemented:
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
 - The same number is shown as a `tel:` link in the contact section of
-  `index.html` and in the footer (`js/footer.js`), both with an inline Lucide
-  phone icon, and as plain text in `privacy.html`. If it changes, update all
-  of these places.
+  `index.html`, in the tour CTA (`js/cta.js`) and in the footer
+  (`js/footer.js`), all with an inline Lucide phone icon, and as plain text
+  in `privacy.html`. If it changes, update all of these places.
+- The contact section in `index.html` and the tour CTA (`js/cta.js`) share the
+  same phone/location row (`.contact-info`); keep both copies in sync.
 - Image files in `images/cards/` and `images/hero/` (made from `originals/`
   with `tools/make_image.py`).
 - Home page hero image (`images/hero/hero2.webp`).
