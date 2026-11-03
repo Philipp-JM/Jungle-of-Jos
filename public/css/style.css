@@ -908,6 +908,44 @@ section {
   white-space: nowrap;
 }
 
+/* Copyright, privacy link and phone: side by side with a thin divider on
+   wide screens, stacked on small screens. */
+.site-footer-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm) var(--spacing-lg);
+}
+
+.site-footer-items > * + * {
+  padding-left: var(--spacing-lg);
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.site-footer-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.site-footer-phone svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .site-footer-items {
+    flex-direction: column;
+  }
+
+  .site-footer-items > * + * {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
 /* =================================================
    PAGE HEADER (for sub-pages like FAQ, tour details)
    ================================================= */

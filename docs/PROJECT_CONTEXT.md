@@ -106,8 +106,9 @@ Repeated markup is injected into placeholders by normal local scripts:
   tours would make it too long); it links to `tours/index.html`. The nav links
   name `index.html` explicitly so they also work via `file://`; on Cloudflare
   Pages the address bar still shows the short URL (`/tours/`, `/info/`).
-- `js/footer.js` inserts the footer, the current copyright year, Jos' phone
-  number and the link to the privacy policy.
+- `js/footer.js` inserts the footer: copyright with the current year, the
+  link to the privacy policy and Jos' phone number (in this order, divided by
+  thin lines on wide screens and stacked on phones).
 - `js/cta.js` inserts the contact CTA on tour pages.
 
 This is intentionally not a `fetch()`-based include. Normal scripts can write
@@ -345,10 +346,10 @@ Implemented:
 - A working Instagram link in the shared tour CTA: `jungle_of_jos`.
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
-- The same number is shown as a `tel:` link (with a Lucide phone icon on the
-  home page, "Phone / WhatsApp" elsewhere) in the
-  contact section of `index.html`, in the footer (`js/footer.js`) and in
-  `privacy.html`. If it changes, update all of these places.
+- The same number is shown as a `tel:` link in the contact section of
+  `index.html` and in the footer (`js/footer.js`), both with an inline Lucide
+  phone icon, and in `privacy.html` ("Phone / WhatsApp"). If it changes,
+  update all of these places.
 - Image files in `images/cards/` and `images/hero/` (made from `originals/`
   with `tools/make_image.py`).
 - Home page hero image (`images/hero/hero2.webp`).
