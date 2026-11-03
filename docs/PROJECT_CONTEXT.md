@@ -345,7 +345,8 @@ Implemented:
 - A working Instagram link in the shared tour CTA: `jungle_of_jos`.
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
-- The same number is shown as a `tel:` link ("Phone / WhatsApp") in the
+- The same number is shown as a `tel:` link (with a Lucide phone icon on the
+  home page, "Phone / WhatsApp" elsewhere) in the
   contact section of `index.html`, in the footer (`js/footer.js`) and in
   `privacy.html`. If it changes, update all of these places.
 - Image files in `images/cards/` and `images/hero/` (made from `originals/`

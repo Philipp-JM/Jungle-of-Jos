@@ -872,7 +872,16 @@ section {
 }
 
 .contact-phone a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
   white-space: nowrap;
+}
+
+.contact-phone-icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
 }
 
 .contact-location {
