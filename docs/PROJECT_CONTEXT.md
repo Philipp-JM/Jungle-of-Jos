@@ -348,8 +348,8 @@ Implemented:
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
 - The same number is shown as a `tel:` link in the contact section of
   `index.html` and in the footer (`js/footer.js`), both with an inline Lucide
-  phone icon, and in `privacy.html` ("Phone / WhatsApp"). If it changes,
-  update all of these places.
+  phone icon, and as plain text in `privacy.html`. If it changes, update all
+  of these places.
 - Image files in `images/cards/` and `images/hero/` (made from `originals/`
   with `tools/make_image.py`).
 - Home page hero image (`images/hero/hero2.webp`).
