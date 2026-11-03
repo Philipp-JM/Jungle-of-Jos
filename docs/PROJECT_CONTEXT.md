@@ -126,6 +126,13 @@ Fonts (Inter and Archivo, latin subset) are stored locally in `fonts/` with
 their SIL OFL licenses, so no data is sent to Google Fonts. Do not switch
 back to loading fonts from external services.
 
+The favicon is the orangutan emoji from Google Noto Emoji, stored in `icons/`
+(`favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`) together with its
+license notice (`icons/NOTO-EMOJI-LICENSE.txt`). Every page links all three in
+its `<head>`, directly below the stylesheet link; copy these three lines when
+adding a page (with `../` in subfolders, `/` in `404.html`). It is an interim
+icon until Jos has a logo.
+
 Styling is kept in `css/style.css`. Colors, spacing, layout width, and corner
 radius are CSS variables near the top of the file. The visual direction uses
 jungle green, a warm gold accent, WhatsApp green, and Instagram pink.
@@ -347,9 +354,11 @@ Implemented:
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
 - The same number is shown as a `tel:` link in the contact section of
-  `index.html` and in the footer (`js/footer.js`), both with an inline Lucide
-  phone icon, and as plain text in `privacy.html`. If it changes, update all
-  of these places.
+  `index.html`, in the tour CTA (`js/cta.js`) and in the footer
+  (`js/footer.js`), all with an inline Lucide phone icon, and as plain text
+  in `privacy.html`. If it changes, update all of these places.
+- The contact section in `index.html` and the tour CTA (`js/cta.js`) share the
+  same phone/location row (`.contact-info`); keep both copies in sync.
 - Image files in `images/cards/` and `images/hero/` (made from `originals/`
   with `tools/make_image.py`).
 - Home page hero image (`images/hero/hero2.webp`).
@@ -445,6 +454,8 @@ still missing.
 
 General:
 
+- [ ] Logo: does Jos have a logo or symbol (e.g. his Instagram profile
+      picture) to use as favicon instead of the Noto orangutan emoji?
 - [x] Hero image for the home page (`images/hero/hero2.webp`).
 - [x] More photos he owns for the remaining info pages. (The existing images
       in `originals/` are confirmed as Jos' own.)
