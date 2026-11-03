@@ -536,7 +536,17 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.55;
+  object-position: 0% 35%;
+  transform: scale(1.6);
+  opacity: 0.6;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-bg-image {
+    object-position: 40% 0%;
+    transform: scale(1);
+  }
 }
 
 .hero-content {
@@ -655,7 +665,7 @@ section {
 }
 
 /* .is-tinted marks which .tours sections get the beige wash - a page can
-   have several .tours sections back to back (see all-tours.html) and they
+   have several .tours sections back to back (see tours/index.html) and they
    should alternate white/tinted/white, not all render the same color. */
 .tours.is-tinted,
 .whats-included,
@@ -712,12 +722,17 @@ section {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  object-position: var(--x, 50%) var(--y, 50%); /* default: centered */
+  transform: scale(var(--zoom, 1));
+  transform-origin: var(--x, 50%) var(--y, 50%);
   background-color: var(--color-border);
   background-image: var(--image-missing);
   flex-shrink: 0;
 }
 
 .tour-card-body {
+  position: relative; /* paints above a zoomed .tour-image */
+  background-color: var(--color-bg);
   padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
@@ -851,6 +866,24 @@ section {
   margin-bottom: var(--spacing-lg);
 }
 
+.contact-phone {
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.contact-phone a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+}
+
+.contact-phone-icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
 .contact-location {
   color: var(--color-text-light);
 }
@@ -871,8 +904,50 @@ section {
 
 .site-footer a {
   color: #fff;
-  text-decoration: underline;
+  text-decoration: none;
   white-space: nowrap;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Copyright, privacy link and phone: side by side with a thin divider on
+   wide screens, stacked on small screens. */
+.site-footer-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm) var(--spacing-lg);
+}
+
+.site-footer-items > * + * {
+  padding-left: var(--spacing-lg);
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.site-footer-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.site-footer-phone svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .site-footer-items {
+    flex-direction: column;
+  }
+
+  .site-footer-items > * + * {
+    padding-left: 0;
+    border-left: none;
+  }
 }
 
 /* =================================================
@@ -1034,6 +1109,7 @@ section {
   width: 100%;
   height: 320px;
   object-fit: cover;
+  object-position: var(--x, 50%) var(--y, 50%); /* default: centered */
   border-radius: var(--radius);
   background-color: var(--color-bg-alt);
   background-image: var(--image-missing);
@@ -1270,7 +1346,7 @@ section {
 }
 
 /* =================================================
-   GROUP SIZE NOTE (all-tours page)
+   GROUP SIZE NOTE (tour overview page)
    ================================================= */
 /* A quiet, self-contained info box - kept small and muted on purpose so it
    reads as a helpful aside rather than competing with the tour cards above

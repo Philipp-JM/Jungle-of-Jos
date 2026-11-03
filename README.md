@@ -32,7 +32,7 @@ the website.
 
 ### Change a tour price
 
-1. Update the price in `tours/all-tours.html` first. This is the agreed source
+1. Update the price in `tours/index.html` first. This is the agreed source
 	of truth for the public tour list.
 2. Update the matching detail page in `tours/` in the same change.
 3. Check the home page if that tour is one of the four featured cards in
@@ -40,19 +40,21 @@ the website.
 
 ### Change tour or FAQ text
 
-Tour summaries are in `index.html` and `tours/all-tours.html`. Full descriptions,
+Tour summaries are in `index.html` and `tours/index.html`. Full descriptions,
 itineraries, and inclusions are in the matching file under `tours/`. FAQ content
 is in `faq.html`.
 Do not promise a wildlife sighting or invent itinerary times.
 
 ### Add or replace a photo
 
-1. Put the image in `images/` or `images/gallery/`.
-2. Change the relevant `src` in the HTML file.
-3. Describe alt text what is visible, not what it is for.
-4. Check that the image is approved for use and displays well on a phone.
+1. Put the original photo into the `originals/` folder (outside `public/`).
+2. Optimize it with the script `tools/make_image.py`. It creates the small
+	WebP files that the website uses.
+3. Use the new file in the HTML (`src` and a meaningful alt text that describes
+	what is visible), and check that the image is approved for use.
 
-Existing image files are not automatically considered approved final assets.
+Step by step instructions are in the section "Image preparation tool" in
+[`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md).
 
 ### Contact links
 

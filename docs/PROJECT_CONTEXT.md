@@ -47,7 +47,7 @@ knowledge that future volunteers should not need.
 The original one-page concept was replaced by a static multi-page website as
 the number of tours and the amount of detail grew. The current structure is:
 
-- `index.html`: home page with hero, About, featured tours, gallery, and contact.
+- `index.html`: home page with hero, About teaser, featured tours, and contact.
 - `about.html`: about Jos, his HPI license, his team and how he guides. The
   home page only shows a short About teaser that links here, and the "About"
   navigation item points to this page.
@@ -69,7 +69,7 @@ the number of tours and the amount of detail grew. The current structure is:
   emergency numbers, weather, phone and internet, local customs.
 - `info/wildlife.html`: Sumatran orangutans (facts, semi-wild vs. wild) and the
   other confirmed monkey species, with a no-guarantee note.
-- `tours/all-tours.html`: complete tour overview.
+- `tours/index.html`: complete tour overview.
 - `tours/3-hour.html`, `tours/1-day.html`, `tours/2-day.html`, `tours/3-day.html`,
   `tours/4-day.html`, `tours/5-day.html`, `tours/6-day.html`, `tours/7-day.html`,
   `tours/kuta-cane.html`, and `tours/orangutan-monitoring.html`: individual
@@ -103,9 +103,12 @@ Repeated markup is injected into placeholders by normal local scripts:
 - `js/nav.js` inserts the navigation. "Info" has a dropdown submenu listing
   the pages in `info/`: when adding or renaming an info page, also update the
   submenu list in `js/nav.js`. "Tours" has no dropdown on purpose (eleven
-  tours would make it too long); it links to `tours/all-tours.html`.
-- `js/footer.js` inserts the footer, the current copyright year and the link
-  to the privacy policy.
+  tours would make it too long); it links to `tours/index.html`. The nav links
+  name `index.html` explicitly so they also work via `file://`; on Cloudflare
+  Pages the address bar still shows the short URL (`/tours/`, `/info/`).
+- `js/footer.js` inserts the footer: copyright with the current year, the
+  link to the privacy policy and Jos' phone number (in this order, divided by
+  thin lines on wide screens and stacked on phones).
 - `js/cta.js` inserts the contact CTA on tour pages.
 
 This is intentionally not a `fetch()`-based include. Normal scripts can write
@@ -127,6 +130,104 @@ Styling is kept in `css/style.css`. Colors, spacing, layout width, and corner
 radius are CSS variables near the top of the file. The visual direction uses
 jungle green, a warm gold accent, WhatsApp green, and Instagram pink.
 
+### Image preparation tool
+
+Photos from a camera or phone are huge (often 3000 to 4000 pixels wide and
+several MB). A visitor's browser would have to download all of that just to show
+a small picture, which makes the site slow. So photos are never put into
+`public/` as they are. Instead:
+
+- The untouched **original** goes into the folder `originals/`. This folder is
+  outside `public/`, so it is not published.
+- The script `tools/make_image.py` makes a **small copy** for the website and
+  saves it in `public/images/`. Only these small copies are published.
+
+The script scales the picture down, saves it as WebP (a modern image format that
+is smaller than JPG at the same quality), rotates it correctly, and removes
+hidden data like the GPS location. It never enlarges a picture and never
+changes the original.
+
+Two kinds of small copies exist:
+
+| Kind | Command word | Saved in | Max. width | Used for |
+|---|---|---|---|---|
+| Card | `card` | `public/images/cards/` | 800 px | tour cards and small pictures |
+| Hero | `hero` | `public/images/hero/` | 1920 px | big banner pictures at the top of a page |
+
+Currently every picture on the site, including the banners on the detail pages
+and the portraits of Jos, uses the card version. The only hero version so far is
+the home page banner (`images/hero/hero2.webp`).
+
+#### One-time setup (per computer)
+
+1. Install Python 3 from https://www.python.org/downloads/. On Windows, tick
+   "Add Python to PATH" in the installer.
+2. Open a terminal (see step 3 below) and install the two helper libraries:
+   `pip install Pillow pillow-heif`
+   `Pillow` does the image work. `pillow-heif` is only needed for HEIC/HEIF
+   photos (the default photo format of iPhones). Without it everything else
+   still works.
+
+This is the one exception to "no dependencies". It only affects the person
+preparing images. It is not part of the website, and the website itself stays
+plain HTML, CSS and JavaScript. The script is optional: you can also resize and
+export WebP by hand (e.g. with https://squoosh.app) and put the result into the
+folders above.
+
+#### Adding a new photo, step by step
+
+1. **Choose a file name** in lowercase letters, digits and no spaces, e.g.
+   `orang10.jpg`. The name decides the name of the result (`orang10.webp`) and
+   is later used in the HTML. Accepted formats: jpg, jpeg, png, webp, heic, heif.
+2. **Copy the file** into the `originals/` folder of the project.
+3. **Open a terminal in the project folder** (the folder that contains
+   `originals/`, `public/` and `tools/`). Windows: open the folder in File
+   Explorer, click the address bar, type `cmd` and press Enter. Mac: right-click
+   the folder and choose "New Terminal at Folder". In VS Code: Terminal, New
+   Terminal.
+4. **Run the script.** On Windows use the word `python`, on Mac and Linux
+   `python3`:
+   - `python tools/make_image.py card orang10` makes the card version of this
+     one photo (write the name without the ending).
+   - `python tools/make_image.py card` makes card versions of **all** photos in
+     `originals/` that do not have one yet.
+   - `python tools/make_image.py hero orang10` makes the hero version. Here the
+     name is mandatory.
+5. **Read the output.** A line like
+   `ok     orang10: 4032x3024 -> 800x600, 3.1 MB -> 62 KB` means it worked: the
+   picture was shrunk from 4032 to 800 pixels width, and the file from 3.1 MB to
+   62 KB. A line starting with `skip` means this picture already exists and was
+   left alone. A line starting with `error` explains what went wrong.
+6. **Check the result.** The new file `orang10.webp` is now in
+   `public/images/cards/` (or `hero/`). Open it to see that it looks fine.
+7. **Use it in the HTML.** For example, in a tour card:
+   `<img src="images/cards/orang10.webp" alt="..." class="tour-image">`.
+   In files inside a subfolder (`tours/`, `info/`) the path starts with
+   `../`: `../images/cards/orang10.webp`. The alt text describes what is
+   visible, not what it is for.
+8. **Open the page** in a browser and check that the picture shows up, also in
+   a narrow window (phone layout).
+9. **Commit both** the original in `originals/` and the new WebP file.
+
+#### Replacing a photo
+
+Put the new original into `originals/` with the **same name** as before, then
+run the same command with `--force`, for example
+`python tools/make_image.py card orang10 --force`. Without `--force` the script
+keeps the existing image. The HTML does not need to change. If the browser
+still shows the old picture, reload the page without cache (Ctrl+F5).
+
+#### Problems
+
+- `python` is not recognized / command not found: Python is not installed, or
+  not on the PATH. On Mac and Linux try `python3`.
+- `Pillow is missing`: run `pip install Pillow` (or `pip3 install Pillow`).
+- `HEIC/HEIF needs pillow-heif`: run `pip install pillow-heif`.
+- `No original named ...`: the name does not match a file in `originals/`.
+  Check spelling and that the file is in `originals/`, not somewhere else.
+- The picture looks too blurry or too large: the widths and the quality are the
+  values `max_width` and `quality` at the top of `tools/make_image.py`.
+
 ## Hosting and domain
 
 The site is hosted exclusively on Cloudflare Pages (free, static, no build
@@ -134,8 +235,20 @@ step), currently at `jungle-of-jos.pages.dev`. Cloudflare Pages settings
 (Settings, Build): framework preset "None", build command empty, build output
 directory `public`. These settings apply to production (`main`) and preview
 branches (e.g. `dev`) alike. A data processing agreement
-with Cloudflare is in place. No tracking, analytics or other third-party
-services are enabled; keep it that way, or update `privacy.html` first.
+with Cloudflare is in place.
+
+Cloudflare Web Analytics is used for visitor statistics (decided by the
+project owner). It is cookieless: no cookies, no local storage, no tracking
+pixel, no fingerprinting, unlike Google Analytics or Matomo. It is enabled in
+the Cloudflare dashboard (Workers & Pages, the project, Metrics, Web
+Analytics), which makes Cloudflare inject its small beacon script into the
+pages automatically on the next deployment; there is no script tag in the
+HTML. `privacy.html` section 3 describes it. No other tracking, advertising or
+third-party services are used; keep it that way, or update `privacy.html`
+first.
+
+There is no online booking and no online payment. Tours are paid in cash on
+site, so no bank or card data is processed.
 
 The Cloudflare account was set up by a volunteer on Jos' behalf, using an
 email address created for Jos, and is to be handed over to Jos. Jos is the
@@ -143,9 +256,10 @@ operator of the website and the controller under data protection law. The
 volunteer who owns the GitHub repository only maintains the code and is not
 the operator. See "Legal and privacy" under "Open questions for Jos".
 
-The domain decision is still open. Launching on the free `pages.dev`
-subdomain is acceptable. If a custom domain is purchased, long-term ownership
-and payment responsibility must be agreed with Jos first.
+The site launches on the free `pages.dev` subdomain. A custom domain is
+planned: Jos will buy it himself and owns and pays for it long term; the
+project owner tells him where to buy it. Until then everything stays on
+`jungle-of-jos.pages.dev`.
 
 The full domain only appears in three places (everything else uses relative
 paths): `robots.txt` (sitemap line), `sitemap.xml`, and the
@@ -166,20 +280,26 @@ the home page for unknown URLs.
 
 ## Tours and pricing
 
-The home page highlights four offers: the 3-hour trek, 2-day trek, 3-day trek,
-and Kuta Cane expedition. The full overview currently contains ten tour links,
-including 1-day and 4- to 7-day treks plus Orangutan Monitoring.
+The home page highlights six offers: the 3-hour, 1-day, 2-day and 3-day treks,
+the 7-day expedition and the Kuta Cane expedition. The full overview
+(`tours/index.html`) contains the 3-hour, 1-day and 2- to 7-day treks, the Kuta
+Cane expedition and Orangutan Monitoring (listed twice: under the regular tours
+and under "Special Tours").
 
-By agreement, `tours/all-tours.html` is the current source of truth for the
-public overview and prices:
+By agreement, `tours/index.html` is the current source of truth for the
+public overview and prices. The detail pages of the 1- to 7-day treks show the
+same prices. The 3-hour, Kuta Cane and Orangutan Monitoring detail pages are
+still "under construction" notes without price or itinerary.
 
-Orangutan Monitoring is listed but its description and format are still marked
-as unconfirmed. It must not be treated as final public content until Jos
-confirms what the activity includes.
+Orangutan Monitoring is listed twice on purpose (regular tours and "Special
+Tours"). Its card descriptions and page subtitle are a generic sentence about
+looking for and observing orangutans; the detail page is still an "under
+construction" note. Do not add inclusions or a format until Jos confirms what
+the activity includes.
 
 ## Content and factual guidance
 
-All `images/jos*.webp` photos show Jos (`jos1` on the home page, `jos4` on
+All `images/cards/jos*.webp` photos show Jos (`jos1` on the home page, `jos4` on
 `about.html`). Jos (real first name: Justra) is 54, born and raised in Bukit Lawang, and the youngest of eight siblings.
 He leads treks himself. His team is currently a cook; when needed he brings in
 other local guides as partners, and porters on request. He speaks Indonesian
@@ -226,17 +346,30 @@ Implemented:
 - A working Instagram link in the shared tour CTA: `jungle_of_jos`.
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
-- Image files in `images/` and `images/gallery/`, with some already referenced.
+- The same number is shown as a `tel:` link in the contact section of
+  `index.html` and in the footer (`js/footer.js`), both with an inline Lucide
+  phone icon, and as plain text in `privacy.html`. If it changes, update all
+  of these places.
+- Image files in `images/cards/` and `images/hero/` (made from `originals/`
+  with `tools/make_image.py`).
+- Home page hero image (`images/hero/hero2.webp`).
+- Photos on the tour cards, tour detail pages, the About page and some info
+  pages (`info/getting-there.html`, `info/national-park.html`,
+  `info/wildlife.html`).
+- Prices on the 1- to 7-day detail pages match `tours/index.html`.
 
 Still incomplete or requiring review:
 
-- All photos in `images/` were sent by Jos and are his own, so they may be
-  used on the site. The home page hero image is still an empty placeholder.
-  Only add new images whose ownership is equally clear.
-- FAQ answers, itinerary times, several inclusions, and some tour descriptions
-  still contain `PLACEHOLDER` text and require facts from Jos.
-- Prices need to be synchronized from `tours/all-tours.html` to detail pages.
-- The domain and the long-term payer/owner remain undecided.
+- All photos in `originals/` were sent by Jos and are his own, so they may be
+  used on the site. Only add new images whose ownership is equally clear.
+- Several inclusions and some tour descriptions still contain `PLACEHOLDER`
+  text and require facts from Jos (left in place on purpose until the project
+  owner reviews them). Two FAQ answers (group size, children) are "under
+  construction" notes.
+- The 3-hour, Kuta Cane and Orangutan Monitoring detail pages are only
+  "under construction" notes, although the 3-hour and Kuta Cane tours are
+  featured on the home page. This is accepted for launch.
+- Custom domain not bought yet (see "Hosting and domain").
 
 ## Content expansion (TODO)
 
@@ -286,10 +419,12 @@ To do:
       threats, access only with permit and licensed guide, jungle rules,
       how to recognize a licensed (HPI) guide, and the standard prices set by
       the guide association (the 3-hour to 5-day prices in
-      `tours/all-tours.html` match them). Open points are listed under
+      `tours/index.html` match them). Open points are listed under
       "Open questions for Jos" below.
-- [ ] Add photos to the info pages and info cards (ideally Jos' own photos,
-      e.g. from his Instagram, with confirmed permission).
+- [ ] Add photos to the remaining info pages and the info cards. Done:
+      `info/getting-there.html`, `info/national-park.html`,
+      `info/wildlife.html`. Still without photos: `info/index.html` (cards),
+      `info/packing-list.html`, `info/travel-tips.html`.
 - [ ] Have Jos (or the project owner) review general background texts before
       publishing, starting with `info/getting-there.html`.
 - [x] Extended `faq.html` to 20 questions in three categories. Group size
@@ -310,29 +445,43 @@ still missing.
 
 General:
 
-- [ ] Hero image for the home page, and more photos he owns for the info
-      pages. (The existing images in `images/` are confirmed as Jos' own.)
-- [ ] Domain: whether to buy one, and who owns and pays for it long term.
+- [x] Hero image for the home page (`images/hero/hero2.webp`).
+- [x] More photos he owns for the remaining info pages. (The existing images
+      in `originals/` are confirmed as Jos' own.)
+- [x] Domain: Jos buys it and owns and pays for it; the project owner tells
+      him where. Launch is on `pages.dev`.
+- [ ] Domain bought: then replace `https://jungle-of-jos.pages.dev` in all
+      files and add the domain in Cloudflare Pages.
 
 Tours:
 
-- [ ] Orangutan Monitoring: what the activity includes, its format and a
-      short description (see `tours/orangutan-monitoring.html` and the two
-      `PLACEHOLDER` descriptions in `tours/all-tours.html`).
-- [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
+- [ ] Orangutan Monitoring: what the activity includes and its format. The
+      descriptions are generic for now and the detail page is "under
+      construction". (Listing it twice on the overview is intended.)
+- [ ] 3-hour trek and Kuta Cane expedition: itinerary, inclusions and price
+      for the detail pages (currently "under construction").
+- [x] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
       included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
-- [ ] Itinerary times and tour descriptions that are still generic.
+- [x] Itinerary times and tour descriptions that are still generic. The 4- to
+      7-day descriptions now set each length apart (4 days: you see what the
+      jungle offers; 5 and 6 days: more time in nature and with the group;
+      7 days: the adventure). Jos should confirm this.
 
 Getting there (`info/getting-there.html`):
 
-- [ ] Which transport option does Jos recommend to his guests?
-- [ ] Does he offer a transfer from the Bukit Lawang bus station (the FAQ
-      mentions it), and is it free or paid?
-- [ ] Is there still a direct bus from Kualanamu Airport to Bukit Lawang?
-- [ ] Are the travel times on the page realistic (airport/Medan to Bukit
-      Lawang, Bukit Lawang to Berastagi and Lake Toba)?
-- [ ] Should guests arrive the day before their trek, or can they start on
-      the day they arrive?
+- [x] Which transport option does Jos recommend to his guests? (Train or bus
+      from Kualanamu Airport to Medan, then a tourist bus from Medan to Bukit
+      Lawang.)
+- [x] Does he offer a transfer from the Bukit Lawang bus station? (Yes, he
+      can organize a transfer from the bus station to the hotel.)
+- [ ] Is the transfer from the bus station free or paid?
+- [x] Is there still a direct bus from Kualanamu Airport to Bukit Lawang?
+      (No, guests have to go via Medan.)
+- [x] Are the travel times on the page realistic? (Updated: airport to Medan
+      about 1 hour, public bus Medan to Bukit Lawang 4 to 5 hours, Bukit
+      Lawang to Berastagi 3 to 4 hours; the rest is correct.)
+- [x] Should guests arrive the day before their trek? (Yes, treks start at
+      9:00 AM, so guests should arrive the day before.)
 
 National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
@@ -347,14 +496,14 @@ National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
 Travel tips (`info/travel-tips.html`):
 
-- [ ] Does Jos accept payment in Indonesian Rupiah, euros, or both?
-- [ ] Are there any ATMs in Bukit Lawang now, or only cash at hotels?
-- [ ] When is the rainy season around Bukit Lawang, and are treks offered
-      all year? (The page currently says trekking is possible all year.)
+- [x] Does Jos accept payment in Indonesian Rupiah, euros, or both? Rupiah!
+- [x] Are there any ATMs in Bukit Lawang now, or only cash at hotels? No! only hotels!
+- [x] When is the rainy season around Bukit Lawang, and are treks offered
+      all year? (The page currently says trekking is possible all year.) All year!
 
 Packing list (`info/packing-list.html`):
 
-- [ ] Are leech socks or anything else specific worth recommending?
+- [x] Are leech socks or anything else specific worth recommending? No, normal socks!
 
 FAQ (`faq.html`):
 
@@ -362,21 +511,22 @@ FAQ (`faq.html`):
       "under construction" note.)
 - [ ] Can children join, and is there a minimum age? (Also an "under
       construction" note.)
-- [ ] Are the answers about leeches and snakes correct?
-- [ ] River tubing: is it suitable for non-swimmers, and are life jackets
-      provided? Which tours include tubing?
+- [x] River tubing: is it suitable for non-swimmers, and are life jackets
+      provided? (Yes, life vests are provided, so it is also suitable for
+      non-swimmers.)
+- [ ] Which tours include tubing?
 - [ ] Do porters cost extra, and how much?
-- [ ] Is it true that salt is placed around the camp to keep snakes away?
-      (Not mentioned on the site; there is no scientific evidence that salt
-      repels snakes.)
+- [x] Is it true that salt is placed around the camp to keep snakes away?
+      (Do not mention salt anywhere on the site. If needed, only say that
+      the team takes care of safety.)
 
 Legal and privacy (`privacy.html`, hosting):
 
 These points should be settled before launch. They are not legal advice;
 ideally have the final privacy policy checked by someone with legal knowledge.
 
-- [ ] Make sure Jos knows that he is the operator of the website and the
-      responsible person (controller) for personal data, and agrees to it.
+- [x] Jos knows that he is the operator of the website and the responsible
+      person (controller) for personal data, and agreed (via WhatsApp).
 - [ ] Hand over the Cloudflare account and its email address to Jos (login
       details, recovery options, two-factor authentication). For self-serve
       (free) accounts there is no separate checkbox: Cloudflare's data
@@ -385,25 +535,33 @@ ideally have the final privacy policy checked by someone with legal knowledge.
       that the account was created on his behalf, so that "we have concluded
       a data processing agreement" in `privacy.html` is true for him. Keep a
       PDF copy of the current DPA version.
-- [ ] Storage periods: how long are Cloudflare access logs kept, and how long
-      does Jos keep WhatsApp chats, emails and booking data? The privacy
-      policy has to state this and currently does not.
-- [ ] Add contact by email to section 4 of `privacy.html`: the address is a
-      Gmail address, so messages are processed by Google (USA).
-- [ ] Applicable law: the policy only refers to the GDPR. Jos is in
-      Indonesia, where the Personal Data Protection Law (UU PDP, No. 27/2022)
-      applies. Decide whether to mention it.
-- [ ] GDPR representative in the EU (Art. 27): needed in principle because the
-      site targets EU travellers; the exception for occasional, low-risk
-      processing probably applies. Decide this consciously.
-- [ ] Mention that booking data goes to Jos in Indonesia (no EU adequacy
-      decision).
-- [ ] State the right to object (Art. 21 GDPR) separately and clearly, since
-      section 2 relies on legitimate interest (Art. 6(1)(f)).
-- [ ] Check in the Cloudflare dashboard that Web Analytics, Bot Fight Mode and
-      similar features are off, so that "no cookies, no tracking" stays true.
-- [ ] Imprint: probably not needed for an operator in Indonesia; confirm once
-      the operator question above is settled.
+- [x] Storage periods: `privacy.html` says that Cloudflare keeps server logs
+      only briefly under its own deletion periods (Jos has no access to them)
+      and that Jos keeps messages only as long as needed for the request and
+      the tour, and deletes them on request. Jos should know he committed to
+      this.
+- [x] Email: the Gmail address is only shown as contact address of the
+      controller; there is no Gmail integration, no contact form and no
+      online booking, so no separate section was added (owner's decision).
+- [x] Applicable law: the policy follows the GDPR. The Indonesian Personal
+      Data Protection Law (UU PDP, No. 27/2022) is considered covered by the
+      same practice (minimal data, no tracking, cash payment) and is not
+      mentioned separately (owner's decision). Revisit if the site starts to
+      collect more data.
+- [x] GDPR representative in the EU (Art. 27): none appointed. The site is
+      fully owned by Jos in Indonesia and processing is occasional and low
+      risk (Art. 27(2)(a) exception).
+- [x] `privacy.html` mentions that messages are processed by Jos in
+      Indonesia (no EU adequacy decision, Art. 49(1)(b) GDPR) and that there
+      is no online booking or payment (cash only).
+- [x] Right to object (Art. 21 GDPR) is a separate section 7 of
+      `privacy.html`.
+- [ ] Cloudflare dashboard: turn Web Analytics on for the Pages project (it
+      is described in `privacy.html` section 3), and check that Bot Fight
+      Mode and similar features are off (they can set cookies).
+- [ ] Imprint: probably not needed for an operator in Indonesia (an imprint
+      is mainly a German/Austrian legal notice duty for providers there);
+      confirm this.
 
 About (`about.html`):
 
