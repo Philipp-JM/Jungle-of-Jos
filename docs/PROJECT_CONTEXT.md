@@ -455,23 +455,19 @@ Tours:
       construction". (Listing it twice on the overview is intended.)
 - [ ] 3-hour trek and Kuta Cane expedition: itinerary, inclusions and price
       for the detail pages (currently "under construction").
-- [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
+- [x] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
       included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
-- [ ] Itinerary times and tour descriptions that are still generic. The 4- to
+- [x] Itinerary times and tour descriptions that are still generic. The 4- to
       7-day descriptions now set each length apart (4 days: you see what the
       jungle offers; 5 and 6 days: more time in nature and with the group;
       7 days: the adventure). Jos should confirm this.
 
 Getting there (`info/getting-there.html`):
 
-- [ ] Which transport option does Jos recommend to his guests?
-- [ ] Does he offer a transfer from the Bukit Lawang bus station (the FAQ
-      mentions it), and is it free or paid?
-- [ ] Is there still a direct bus from Kualanamu Airport to Bukit Lawang?
+- [ ] Is the transfer from the Bukit Lawang bus station to the hotel free or
+      paid? (Jos confirmed he can organize it.)
 - [ ] Are the travel times on the page realistic (airport/Medan to Bukit
       Lawang, Bukit Lawang to Berastagi and Lake Toba)?
-- [ ] Should guests arrive the day before their trek, or can they start on
-      the day they arrive?
 
 National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
