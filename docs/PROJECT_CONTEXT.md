@@ -106,8 +106,9 @@ Repeated markup is injected into placeholders by normal local scripts:
   tours would make it too long); it links to `tours/index.html`. The nav links
   name `index.html` explicitly so they also work via `file://`; on Cloudflare
   Pages the address bar still shows the short URL (`/tours/`, `/info/`).
-- `js/footer.js` inserts the footer, the current copyright year and the link
-  to the privacy policy.
+- `js/footer.js` inserts the footer: copyright with the current year, the
+  link to the privacy policy and Jos' phone number (in this order, divided by
+  thin lines on wide screens and stacked on phones).
 - `js/cta.js` inserts the contact CTA on tour pages.
 
 This is intentionally not a `fetch()`-based include. Normal scripts can write
@@ -345,6 +346,10 @@ Implemented:
 - A working Instagram link in the shared tour CTA: `jungle_of_jos`.
 - WhatsApp buttons link to Jos' number +62 822-7775-2204 via
   `https://wa.me/6282277752204` (in `index.html` and `js/cta.js`).
+- The same number is shown as a `tel:` link in the contact section of
+  `index.html` and in the footer (`js/footer.js`), both with an inline Lucide
+  phone icon, and as plain text in `privacy.html`. If it changes, update all
+  of these places.
 - Image files in `images/cards/` and `images/hero/` (made from `originals/`
   with `tools/make_image.py`).
 - Home page hero image (`images/hero/hero2.webp`).
@@ -441,7 +446,7 @@ still missing.
 General:
 
 - [x] Hero image for the home page (`images/hero/hero2.webp`).
-- [ ] More photos he owns for the remaining info pages. (The existing images
+- [x] More photos he owns for the remaining info pages. (The existing images
       in `originals/` are confirmed as Jos' own.)
 - [x] Domain: Jos buys it and owns and pays for it; the project owner tells
       him where. Launch is on `pages.dev`.
@@ -455,21 +460,28 @@ Tours:
       construction". (Listing it twice on the overview is intended.)
 - [ ] 3-hour trek and Kuta Cane expedition: itinerary, inclusions and price
       for the detail pages (currently "under construction").
-- [ ] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
+- [x] Other inclusions per tour (the `PLACEHOLDER` item in the "What's
       included" list of the 1-, 2-, 4-, 5-, 6- and 7-day pages).
-- [ ] Itinerary times and tour descriptions that are still generic (e.g. the
-      `PLACEHOLDER` closing sentences on the 4-, 5- and 6-day pages).
+- [x] Itinerary times and tour descriptions that are still generic. The 4- to
+      7-day descriptions now set each length apart (4 days: you see what the
+      jungle offers; 5 and 6 days: more time in nature and with the group;
+      7 days: the adventure). Jos should confirm this.
 
 Getting there (`info/getting-there.html`):
 
-- [ ] Which transport option does Jos recommend to his guests?
-- [ ] Does he offer a transfer from the Bukit Lawang bus station (the FAQ
-      mentions it), and is it free or paid?
-- [ ] Is there still a direct bus from Kualanamu Airport to Bukit Lawang?
-- [ ] Are the travel times on the page realistic (airport/Medan to Bukit
-      Lawang, Bukit Lawang to Berastagi and Lake Toba)?
-- [ ] Should guests arrive the day before their trek, or can they start on
-      the day they arrive?
+- [x] Which transport option does Jos recommend to his guests? (Train or bus
+      from Kualanamu Airport to Medan, then a tourist bus from Medan to Bukit
+      Lawang.)
+- [x] Does he offer a transfer from the Bukit Lawang bus station? (Yes, he
+      can organize a transfer from the bus station to the hotel.)
+- [ ] Is the transfer from the bus station free or paid?
+- [x] Is there still a direct bus from Kualanamu Airport to Bukit Lawang?
+      (No, guests have to go via Medan.)
+- [x] Are the travel times on the page realistic? (Updated: airport to Medan
+      about 1 hour, public bus Medan to Bukit Lawang 4 to 5 hours, Bukit
+      Lawang to Berastagi 3 to 4 hours; the rest is correct.)
+- [x] Should guests arrive the day before their trek? (Yes, treks start at
+      9:00 AM, so guests should arrive the day before.)
 
 National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
@@ -484,14 +496,14 @@ National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
 Travel tips (`info/travel-tips.html`):
 
-- [ ] Does Jos accept payment in Indonesian Rupiah, euros, or both?
-- [ ] Are there any ATMs in Bukit Lawang now, or only cash at hotels?
-- [ ] When is the rainy season around Bukit Lawang, and are treks offered
-      all year? (The page currently says trekking is possible all year.)
+- [x] Does Jos accept payment in Indonesian Rupiah, euros, or both? Rupiah!
+- [x] Are there any ATMs in Bukit Lawang now, or only cash at hotels? No! only hotels!
+- [x] When is the rainy season around Bukit Lawang, and are treks offered
+      all year? (The page currently says trekking is possible all year.) All year!
 
 Packing list (`info/packing-list.html`):
 
-- [ ] Are leech socks or anything else specific worth recommending?
+- [x] Are leech socks or anything else specific worth recommending? No, normal socks!
 
 FAQ (`faq.html`):
 
@@ -499,13 +511,14 @@ FAQ (`faq.html`):
       "under construction" note.)
 - [ ] Can children join, and is there a minimum age? (Also an "under
       construction" note.)
-- [ ] Are the answers about leeches and snakes correct?
-- [ ] River tubing: is it suitable for non-swimmers, and are life jackets
-      provided? Which tours include tubing?
+- [x] River tubing: is it suitable for non-swimmers, and are life jackets
+      provided? (Yes, life vests are provided, so it is also suitable for
+      non-swimmers.)
+- [ ] Which tours include tubing?
 - [ ] Do porters cost extra, and how much?
-- [ ] Is it true that salt is placed around the camp to keep snakes away?
-      (Not mentioned on the site; there is no scientific evidence that salt
-      repels snakes.)
+- [x] Is it true that salt is placed around the camp to keep snakes away?
+      (Do not mention salt anywhere on the site. If needed, only say that
+      the team takes care of safety.)
 
 Legal and privacy (`privacy.html`, hosting):
 
