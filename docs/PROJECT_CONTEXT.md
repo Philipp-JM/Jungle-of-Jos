@@ -491,14 +491,14 @@ National park and wildlife (`info/national-park.html`, `info/wildlife.html`):
 
 Travel tips (`info/travel-tips.html`):
 
-- [ ] Does Jos accept payment in Indonesian Rupiah, euros, or both?
-- [ ] Are there any ATMs in Bukit Lawang now, or only cash at hotels?
-- [ ] When is the rainy season around Bukit Lawang, and are treks offered
-      all year? (The page currently says trekking is possible all year.)
+- [x] Does Jos accept payment in Indonesian Rupiah, euros, or both? Rupiah!
+- [x] Are there any ATMs in Bukit Lawang now, or only cash at hotels? No! only hotels!
+- [x] When is the rainy season around Bukit Lawang, and are treks offered
+      all year? (The page currently says trekking is possible all year.) All year!
 
 Packing list (`info/packing-list.html`):
 
-- [ ] Are leech socks or anything else specific worth recommending?
+- [x] Are leech socks or anything else specific worth recommending? No, normal socks!
 
 FAQ (`faq.html`):
 
@@ -506,13 +506,14 @@ FAQ (`faq.html`):
       "under construction" note.)
 - [ ] Can children join, and is there a minimum age? (Also an "under
       construction" note.)
-- [ ] Are the answers about leeches and snakes correct?
-- [ ] River tubing: is it suitable for non-swimmers, and are life jackets
-      provided? Which tours include tubing?
+- [x] River tubing: is it suitable for non-swimmers, and are life jackets
+      provided? (Yes, life vests are provided, so it is also suitable for
+      non-swimmers.)
+- [ ] Which tours include tubing?
 - [ ] Do porters cost extra, and how much?
-- [ ] Is it true that salt is placed around the camp to keep snakes away?
-      (Not mentioned on the site; there is no scientific evidence that salt
-      repels snakes.)
+- [x] Is it true that salt is placed around the camp to keep snakes away?
+      (Do not mention salt anywhere on the site. If needed, only say that
+      the team takes care of safety.)
 
 Legal and privacy (`privacy.html`, hosting):
 
